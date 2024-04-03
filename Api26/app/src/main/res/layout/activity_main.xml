@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#AFFFFD">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Elige tu objetivo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:textSize="24sp"
+        />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+
+       >
+
+    </Spinner>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80sp"
+        android:id="@+id/botonObjetivo"
+        android:text="CAMBIAR OBJETIVO"
+        android:onClick="objetivo"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="300sp"
+        android:layout_height="50dp"
+
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:progressTint="#390061"
+
+        android:layout_marginTop="120dp"/>
+
+
+    <TextView
+        android:id="@+id/textoAlihoy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Introduce alimento consumido hoy"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="170dp"
+        android:textSize="24sp"
+        />
+
+
+    <EditText
+        android:id="@+id/aliHoy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nombre"
+        android:inputType="text"
+        android:layout_marginTop="200dp"/>
+
+    <ImageButton
+        android:id="@+id/aliAnadirHoy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="350dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginRight="0dp"
+        android:onClick="calculoCalorias"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+
+
+   <Button
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="400sp"
+       android:id="@+id/botonPasar"
+       android:text="Pasar"/>
+
+
+</RelativeLayout>

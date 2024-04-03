@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Api26</string>
+    <string-array name="drowpdownitems">//desplegables
+        <item>Volumen</item>
+        <item>Deficit</item>
+        <item>Mantenimiento</item>
+        <item>Personalizado</item>
+
+    </string-array>
+
+</resources>
