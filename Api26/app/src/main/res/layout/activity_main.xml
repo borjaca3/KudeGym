@@ -90,5 +90,13 @@
        android:id="@+id/botonPasar"
        android:text="Añadir nuevo alimento en la base de datos"/>
 
+    <Button
+        android:id="@+id/botonCalendario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Abrir el calendario"
+        android:onClick="abrirCalendario"
+        android:layout_marginTop="700sp"/>
+
 
 </RelativeLayout>

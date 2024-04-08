@@ -2,6 +2,7 @@ package com.example.api26;
 
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -24,6 +26,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.util.Arrays;
+import java.util.Calendar;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -93,6 +96,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    public void abrirCalendario(View view){
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog dpd = new DatePickerDialog(MainActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                String fecha = dayOfMonth + "/" + month + "/" + year;
+              //  tv.setText(fecha);
+            }
+        }, year, month, day);
+        dpd.show();
+
+    }
     private void barraPro() {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         int cal=devolverCal(db);
