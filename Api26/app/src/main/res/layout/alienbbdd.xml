@@ -8,6 +8,17 @@
     tools:context=".MainActivity"
     android:background="#AFFFFD">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Introduce el nombre y los valores nutricionales requeridos
+para el nuevo alimento que quieres introducir en la base de datos."
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="60dp"
+        android:textSize="24sp"
+        />
 
 
 
@@ -18,7 +29,7 @@
         android:ems="10"
         android:inputType="numberSigned"
         android:hint="Calorias"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="220dp"
         />
 
     <EditText
@@ -39,6 +50,16 @@
         android:layout_marginRight="0dp"
         android:onClick="insertarAli"
         app:srcCompat="@android:drawable/ic_input_add" />
+
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="650sp"
+        android:id="@+id/BotonVolver"
+        android:text="Volver"
+        android:onClick="volver"/>
 
 
 </RelativeLayout>

@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progressBar); // Inicializa la referencia al ProgressBar
 
+        barraPro();
         ////////////////////////////////////////// solo la primera vez que se ejecuta
         /*SQLITE con = new SQLITE(this, "alimentos", null, 1);
         SQLiteDatabase baseDatos = con.getWritableDatabase();
@@ -72,9 +73,9 @@ public class MainActivity extends AppCompatActivity {
 
         ContentValues registro = new ContentValues();
         String[] whereArgs = new String[]{"1"};
-        registro.put("codigo", Arrays.toString(whereArgs));
-        registro.put("caloriasObjetivo", Arrays.toString(whereArgs));
-        registro.put("calorias", Arrays.toString(whereArgs));
+        registro.put("codigo", 1);
+        registro.put("caloriasObjetivo", 1);
+        registro.put("calorias", 1);
 
         baseDatos.insert("objetivo",null,registro );*/
         ///////////////////////////////////////
@@ -91,6 +92,19 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    private void barraPro() {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        int cal=devolverCal(db);
+        int obj= devolverObj(db);
+
+        progressBar.setMax(obj);
+
+        if (progressBar.getProgress() < obj) {
+            progressBar.setProgress(cal); // Incrementa el progreso (puedes ajustar esto según tus necesidades)
+        }
+    }
+
     public  void objetivo (View view){
         String objetivoSeleccionado = spinner.getSelectedItem().toString();
         Boolean per=true;
@@ -119,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
             registro.put("calorias", c);
 
             db2.update("objetivo", registro, "codigo=?", new String[]{"1"});
+            barraPro();
         }
 
 
@@ -140,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "El alimento no se encontró en la base de datos.", Toast.LENGTH_SHORT).show();
             }
-            progressBar.setMax(1000);
+
             SQLiteDatabase db = dbHelper.getWritableDatabase();
 
             caloriasTotales=devolverCal(db);
@@ -159,11 +174,7 @@ public class MainActivity extends AppCompatActivity {
             registro.put("caloriasObjetivo", obj);
 
             db.update("objetivo", registro, "codigo=?", new String[]{"1"});
-
-
-            if (progressBar.getProgress() < MAX_PROGRESO) {
-                progressBar.setProgress(caloriasTotales); // Incrementa el progreso (puedes ajustar esto según tus necesidades)
-            }
+            barraPro();
         } else {
             // Manejar el caso donde aliNombre o progressBar son nulos
         }

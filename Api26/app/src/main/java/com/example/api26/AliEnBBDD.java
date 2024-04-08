@@ -3,6 +3,7 @@ package com.example.api26;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -68,10 +69,19 @@ public class AliEnBBDD extends AppCompatActivity {
             aliNombre.setText("");
             aliCalorias.setText("");
             Toast.makeText(this,"Se ha insertado correctamente", Toast.LENGTH_LONG).show();
+
+
         }else{
             Toast.makeText(this,"Rellana los campos correctamente", Toast.LENGTH_LONG).show();
 
         }
+
+
+
+    }
+    public void volver(View view){
+        Intent intent= new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
 }

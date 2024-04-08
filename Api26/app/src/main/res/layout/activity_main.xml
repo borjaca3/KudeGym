@@ -44,7 +44,7 @@
         android:layout_height="50dp"
 
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:progressTint="#390061"
+        android:progressTint="#F44336"
 
         android:layout_marginTop="120dp"/>
 
@@ -88,7 +88,7 @@
        android:layout_height="wrap_content"
        android:layout_marginTop="400sp"
        android:id="@+id/botonPasar"
-       android:text="Pasar"/>
+       android:text="Añadir nuevo alimento en la base de datos"/>
 
 
 </RelativeLayout>
