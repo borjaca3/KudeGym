@@ -25,7 +25,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-
        >
 
     </Spinner>
@@ -36,7 +35,10 @@
         android:layout_marginTop="80sp"
         android:id="@+id/botonObjetivo"
         android:text="CAMBIAR OBJETIVO"
-        android:onClick="objetivo"/>
+        android:onClick="objetivo"
+        android:backgroundTint="#FFA500"
+
+        />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -50,6 +52,27 @@
 
 
     <TextView
+        android:id="@+id/textViewCalorias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calorías:"
+        android:textSize="18sp"
+        android:layout_below="@id/progressBar"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"/>
+
+    <TextView
+        android:id="@+id/textViewObjetivo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Objetivo:"
+        android:textSize="18sp"
+        android:layout_below="@id/textViewCalorias"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"/>
+
+
+    <TextView
         android:id="@+id/textoAlihoy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,7 +80,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="280dp"
         android:textSize="24sp"
         />
 
@@ -69,14 +92,14 @@
         android:ems="10"
         android:hint="Nombre"
         android:inputType="text"
-        android:layout_marginTop="200dp"/>
+        android:layout_marginTop="300dp"/>
 
     <ImageButton
         android:id="@+id/aliAnadirHoy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="350dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="310dp"
         android:layout_marginRight="0dp"
         android:onClick="calculoCalorias"
         app:srcCompat="@android:drawable/ic_input_add" />
@@ -88,7 +111,8 @@
        android:layout_height="wrap_content"
        android:layout_marginTop="400sp"
        android:id="@+id/botonPasar"
-       android:text="Añadir nuevo alimento en la base de datos"/>
+       android:text="Añadir nuevo alimento en la base de datos"
+       />
 
 
 </RelativeLayout>
