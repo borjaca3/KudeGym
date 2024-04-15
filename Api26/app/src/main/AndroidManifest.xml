@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Api26"
         tools:targetApi="31">
         <activity
-            android:name=".Formulario"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,9 +24,7 @@
 
         <activity android:name=".AliEnBBDD"/>
         <activity android:name="PersonalizaObjetivo"/>
-        <activity android:name="ConexionBBDD"/>
-        <activity android:name=".Estadisticas"/>
-        <activity android:name=".MainActivity"/>
+        <activity android:name="Estadisticas"/>
     </application>
 
 

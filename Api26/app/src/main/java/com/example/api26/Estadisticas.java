@@ -1,74 +1,47 @@
 package com.example.api26;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.CalendarView;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
-// MainActivity.java
-import android.os.Bundle;
-import android.widget.GridView;
-import android.widget.TextView;
+import android.widget.DatePicker;
+import android.app.DatePickerDialog;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Estadisticas extends AppCompatActivity {
-    private Calendar mCalendar;
-    private GridView mGridView;
-    private CalendarAdapter mCalendarAdapter;
-    private TextView mMonthTextView;
+import java.util.Calendar;
 
-    @Override
+public class Estadisticas extends AppCompatActivity {
+
+
+    @SuppressLint("MissingInflatedId")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.estadisticas);
 
-        mGridView = findViewById(R.id.gridView);
-        mMonthTextView = findViewById(R.id.monthTextView);
-
-        mCalendar = Calendar.getInstance();
-        updateCalendar();
-
-        findViewById(R.id.prevMonthButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mCalendar.add(Calendar.MONTH, -1);
-                updateCalendar();
-            }
-        });
-
-        findViewById(R.id.nextMonthButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mCalendar.add(Calendar.MONTH, 1);
-                updateCalendar();
-            }
-        });
-
-        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView selectedTextView = (TextView) view;
-                int day = Integer.parseInt(selectedTextView.getText().toString());
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-                String selectedDate = sdf.format(mCalendar.getTime());
-                selectedDate = selectedDate.substring(0, 8) + String.format(Locale.getDefault(), "%02d", day);
-                // Aquí puedes hacer algo con la fecha seleccionada, como mostrarla en un Toast
-
-            }
-        });
     }
+    public void abrirCalendario(View view){
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
 
-    private void updateCalendar() {
-        mCalendarAdapter = new CalendarAdapter(this, mCalendar);
-        mGridView.setAdapter(mCalendarAdapter);
-        SimpleDateFormat sdf = new SimpleDateFormat("MMMM yyyy", Locale.getDefault());
-        mMonthTextView.setText(sdf.format(mCalendar.getTime()));
+        DatePickerDialog dpd = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+               String fecha = year + "-" + month + "-" + dayOfMonth;
+                //tv.setText(fecha);
+                // Show the selected date in a Toast
+                Context context = getApplicationContext();
+                CharSequence text = "Selected Date: " + fecha;
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
+        }, year, month, day);
+        dpd.show();
+
+
     }
 }
-

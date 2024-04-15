@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
     private SQLITE dbHelper;
     private SQLITE dbObj;
 
-    int MAX_PROGRESO=1000;
-    int caloriasTotales=0;
+    int MAX_PROGRESO = 1000;
+    int caloriasTotales = 0;
 
     Button boton;
 
@@ -55,11 +55,11 @@ public class MainActivity extends AppCompatActivity {
         dbHelper = new SQLITE(this, "alimentos", null, 1);
 
 
-        aliNombre=findViewById(R.id.aliHoy);
+        aliNombre = findViewById(R.id.aliHoy);
 
-        spinner=findViewById(R.id.spinner);
-        String[] dropdownitems= getResources().getStringArray(R.array.drowpdownitems);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,dropdownitems);
+        spinner = findViewById(R.id.spinner);
+        String[] dropdownitems = getResources().getStringArray(R.array.drowpdownitems);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, dropdownitems);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
@@ -84,39 +84,30 @@ public class MainActivity extends AppCompatActivity {
         ///////////////////////////////////////
 
 
-        boton=(Button)findViewById(R.id.botonPasar);
+        boton = (Button) findViewById(R.id.botonPasar);
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(MainActivity.this, AliEnBBDD.class);
+                Intent intent = new Intent(MainActivity.this, AliEnBBDD.class);
                 startActivity(intent);
             }
         });
 
 
-    }
 
-
-    public void abrirCalendario(View view){
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-
-        DatePickerDialog dpd = new DatePickerDialog(MainActivity.this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                String fecha = dayOfMonth + "/" + month + "/" + year;
-              //  tv.setText(fecha);
-            }
-        }, year, month, day);
-        dpd.show();
 
     }
+    public void pagEstadisticas (View view) {
+        Intent intent = new Intent(MainActivity.this, Estadisticas.class);
+        startActivity(intent);
+    //    Toast.makeText(this, "Alimento guardado ", Toast.LENGTH_SHORT).show();
+
+    }
+
     private void barraPro() {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        int cal=devolverCal(db);
-        int obj= devolverObj(db);
+        int cal = devolverCal(db);
+        int obj = devolverObj(db);
 
         progressBar.setMax(obj);
 
@@ -125,9 +116,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public  void objetivo (View view){
+    public void objetivo(View view) {
         String objetivoSeleccionado = spinner.getSelectedItem().toString();
-        Boolean per=true;
+        Boolean per = true;
 
         SQLiteDatabase db2 = dbHelper.getWritableDatabase();
 
@@ -139,13 +130,13 @@ public class MainActivity extends AppCompatActivity {
         } else if (objetivoSeleccionado.equals("Mantenimiento")) {
             MAX_PROGRESO = 750;
         } else if (objetivoSeleccionado.equals("Personalizado")) {
-            per=false;
-            Intent intent= new Intent(MainActivity.this, PersonalizaObjetivo.class);
+            per = false;
+            Intent intent = new Intent(MainActivity.this, PersonalizaObjetivo.class);
             startActivity(intent);
         }
-        if( per) {
+        if (per) {
 
-            int c=devolverCal(db2);
+            int c = devolverCal(db2);
 
             ContentValues registro = new ContentValues();
             registro.put("codigo", 1);
@@ -160,9 +151,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void calculoCalorias(View view){
-
-
+    public void calculoCalorias(View view) {
 
 
         if (aliNombre != null && progressBar != null) {
@@ -171,20 +160,19 @@ public class MainActivity extends AppCompatActivity {
             int calorias = obtenerCaloriasPorNombre(alimento);
 
             if (calorias != -1) {
-                Toast.makeText(this, "Alimento guardado " , Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Alimento guardado ", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "El alimento no se encontró en la base de datos.", Toast.LENGTH_SHORT).show();
             }
 
             SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-            caloriasTotales=devolverCal(db);
-            int obj= devolverObj(db);
+            caloriasTotales = devolverCal(db);
+            int obj = devolverObj(db);
 
-            caloriasTotales = calorias+caloriasTotales;
-            Toast.makeText(this, "Calorais" + calorias,  Toast.LENGTH_SHORT).show();
+            caloriasTotales = calorias + caloriasTotales;
+            Toast.makeText(this, "Calorais" + calorias, Toast.LENGTH_SHORT).show();
             Toast.makeText(this, "Totales: " + caloriasTotales, Toast.LENGTH_SHORT).show();
-
 
 
             ContentValues registro = new ContentValues();
@@ -219,9 +207,9 @@ public class MainActivity extends AppCompatActivity {
         return calorias;
     }
 
-    private int devolverCal(SQLiteDatabase db){////esta funcion coge las calorias que has consumido hasta el momento
-        int c=-1;
-        Cursor cursor = db.rawQuery("SELECT calorias FROM objetivo WHERE codigo = ?",new String[]{"1"});
+    private int devolverCal(SQLiteDatabase db) {////esta funcion coge las calorias que has consumido hasta el momento
+        int c = -1;
+        Cursor cursor = db.rawQuery("SELECT calorias FROM objetivo WHERE codigo = ?", new String[]{"1"});
         if (cursor != null) {
             try {
                 if (cursor.moveToFirst()) {
@@ -235,9 +223,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private int devolverObj(SQLiteDatabase db){////esta funcion indica cual es el objetivo guardadp
-        int c=-1;
-        Cursor cursor = db.rawQuery("SELECT caloriasObjetivo FROM objetivo WHERE codigo = ?",new String[]{"1"});
+    private int devolverObj(SQLiteDatabase db) {////esta funcion indica cual es el objetivo guardadp
+        int c = -1;
+        Cursor cursor = db.rawQuery("SELECT caloriasObjetivo FROM objetivo WHERE codigo = ?", new String[]{"1"});
         if (cursor != null) {
             try {
                 if (cursor.moveToFirst()) {

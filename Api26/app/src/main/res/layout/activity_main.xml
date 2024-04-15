@@ -123,12 +123,12 @@
         android:layout_marginTop="600sp"/>
 
     <Button
-        android:id="@+id/botonCalendario"
+        android:id="@+id/botonEstadisticas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Abrir el calendario"
-        android:onClick="abrirCalendario"
-        android:layout_marginTop="700sp"/>
+        android:text="ESTADISTICAS"
+        android:onClick="pagEstadisticas"
+        android:layout_marginTop="600sp"/>
 
 
 </RelativeLayout>
