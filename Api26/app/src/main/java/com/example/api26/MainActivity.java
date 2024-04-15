@@ -222,6 +222,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void pagEstadisticas (View view) {
+        Intent intent = new Intent(MainActivity.this, Estadisticas.class);
+        startActivity(intent);
+        //    Toast.makeText(this, "Alimento guardado ", Toast.LENGTH_SHORT).show();
+
+    }
+
 
 
 

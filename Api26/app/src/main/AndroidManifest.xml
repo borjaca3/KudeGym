@@ -25,6 +25,7 @@
         <activity android:name=".AliEnBBDD"/>
         <activity android:name="PersonalizaObjetivo"/>
         <activity android:name="ConexionBBDD"/>
+        <activity android:name=".Estadisticas"/>
     </application>
 
 
