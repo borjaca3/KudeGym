@@ -22,7 +22,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class AliEnBBDD extends AppCompatActivity {
 
-
+    ConexionBBDD conexion;
 
     EditText aliNombre = null;
     EditText aliCalorias = null;
@@ -37,6 +37,8 @@ public class AliEnBBDD extends AppCompatActivity {
         aliNombre=findViewById(R.id.aliNombre);
         aliCalorias=findViewById(R.id.aliCalorias);
 
+        conexion = new ConexionBBDD(getApplicationContext());
+
 
 
     }
@@ -50,19 +52,15 @@ public class AliEnBBDD extends AppCompatActivity {
 
         if( aliNombreStr.isEmpty()==false && aliCaloriasStr.isEmpty()==false){
             ContentValues registro = new ContentValues();
-            //Codigo
-            String ultimoCodigoQuery = "SELECT codigo FROM alimentos ORDER BY codigo DESC LIMIT 1";
-            Cursor cursor = baseDatos.rawQuery(ultimoCodigoQuery, null);
-            int ultimoCodigo = 0;
-            if (cursor.moveToFirst()) {
-                ultimoCodigo = cursor.getInt(0);
-            }
-            cursor.close();
+
+            int ultimoCodigo = conexion.obtenerUtlimoCodigoAlimentos();
 
             int nuevoCodigo=ultimoCodigo+1;
             registro.put("codigo", nuevoCodigo);
             registro.put("nombre", aliNombreStr);
             registro.put("calorias", aliCaloriasStr);
+
+            conexion.insertAlimentos(registro);
 
             baseDatos.insert("alimentos",null,registro );
 

@@ -16,13 +16,15 @@ public class PersonalizaObjetivo extends AppCompatActivity {
 
     EditText objetivo = null;
     private SQLITE dbHelper;
-
+    ConexionBBDD conexion;
 
     @SuppressLint("MissingInflatedId")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.personalizaobjetivo);
         objetivo=findViewById(R.id.objetivo);
+
+        conexion = new ConexionBBDD(getApplicationContext());
 
 
 
@@ -33,10 +35,13 @@ public class PersonalizaObjetivo extends AppCompatActivity {
         SQLiteDatabase db2 = dbHelper.getWritableDatabase();
 
         ContentValues registro = new ContentValues();
-        registro.put("codigo", 1);
+        int codigo= conexion.obtenerUtlimoCodigo();
+        registro.put("codigo", codigo);
         registro.put("caloriasObjetivo", objetivoStr);
-        String[] whereArgs = new String[]{"1"};
-        int filasActualizadas = db2.update("objetivo", registro, "codigo=?", whereArgs);
+
+        //int filasActualizadas =
+        conexion.updateObjetivo(codigo,registro);
+
 
         Intent intent= new Intent(PersonalizaObjetivo.this, MainActivity.class);
         startActivity(intent);
