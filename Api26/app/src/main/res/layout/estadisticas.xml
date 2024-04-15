@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#AFFFFD">
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="650sp"
+        android:id="@+id/BotonVolver"
+        android:text="Volver"
+        android:onClick="volver"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50sp"
+        android:layout_marginLeft="50dp"
+        android:textSize="45sp"
+        android:fontFamily="sans-serif-black"
+        android:text="ESTADÍSTICAS" />
+
+    <Button
+        android:id="@+id/botonCalendario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Abrir el calendario"
+        android:onClick="abrirCalendario"
+        android:layout_marginTop="400sp"/>
+
+</RelativeLayout>
