@@ -146,5 +146,30 @@ public class ConexionBBDD   {
     public void insertAlimentos( ContentValues registro) {
         SQLiteDatabase baseDatos = dbHelper.getWritableDatabase();
         baseDatos.insert("alimentos",null,registro );
+
     }
+
+    public int obtenerCaloriasPorFecha(String fecha) {
+
+        int calorias = 0; // Valor predeterminado si no se encuentra el alimento
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT calorias FROM objetivo WHERE fecha=?", new String[]{fecha});
+
+        if (cursor != null) {
+            try {
+                if (cursor.moveToFirst()) {
+                    calorias = cursor.getInt(0); // Obtener las calorías desde el primer registro
+                }
+            } finally {
+                cursor.close(); // Asegúrate de cerrar el cursor
+            }
+        }
+
+        return calorias;
+    }
+
+
+
+
 }
