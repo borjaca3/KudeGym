@@ -168,6 +168,48 @@ public class ConexionBBDD   {
 
         return calorias;
     }
+    public int obtenerObjetivoPorFecha(String fecha) {
+
+        int caloriasObjetivo = 0; // Valor predeterminado si no se encuentra el alimento
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT caloriasObjetivo FROM objetivo WHERE fecha=?", new String[]{fecha});
+
+        if (cursor != null) {
+            try {
+                if (cursor.moveToFirst()) {
+                    caloriasObjetivo = cursor.getInt(0); // Obtener las calorías desde el primer registro
+                }
+            } finally {
+                cursor.close(); // Asegúrate de cerrar el cursor
+            }
+        }
+
+        return caloriasObjetivo;
+    }
+
+    public boolean obtenerOjetivoCumplidoPorFecha(String fecha) {
+
+        int calorias = 0; // Valor predeterminado si no se encuentra el alimento
+        int objetivo = obtenerObjetivoPorFecha(fecha);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT calorias FROM objetivo WHERE fecha=?", new String[]{fecha});
+
+        if (cursor != null) {
+            try {
+                if (cursor.moveToFirst()) {
+                    calorias = cursor.getInt(0); // Obtener las calorías desde el primer registro
+                    if (calorias >= objetivo){
+                        return true;
+                    }else return false;
+                }
+            } finally {
+                cursor.close(); // Asegúrate de cerrar el cursor
+            }
+        }
+
+        return false;
+    }
 
 
 

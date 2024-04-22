@@ -1,0 +1,8 @@
+<resources>
+    <style name="CalendarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Personaliza los atributos según tus preferencias -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+</resources>

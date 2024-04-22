@@ -14,6 +14,7 @@ public class SQLITE extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table alimentos (codigo integer primary key, nombre text, calorias integer)");
         db.execSQL("create table objetivo (codigo integer primary key,caloriasObjetivo integer, calorias integer, fecha text)");
+        db.execSQL("create table perfil (codigo integer primary key,edad integer, altura integer, peso integer,genero text, nombre text )");
     }
 
     @Override

@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         barraPro();
         guardarDia();
         ////////////////////////////////////////// solo la primera vez que se ejecuta
-       /* SQLITE con = new SQLITE(this, "alimentos", null, 1);
+        /*SQLITE con = new SQLITE(this, "alimentos", null, 1);
         SQLiteDatabase baseDatos = con.getWritableDatabase();
 
 
