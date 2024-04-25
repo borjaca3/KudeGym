@@ -12,13 +12,12 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Elige tu objetivo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
+        android:text="Elige tu objetivo"
         android:textSize="24sp"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -121,14 +120,39 @@
         android:text="ESTADISTICAS"
         android:onClick="pagEstadisticas"
         android:layout_marginTop="600sp"/>
-
     <Button
-        android:id="@+id/botonEstadisticas"
+        android:id="@+id/botonEjercicio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ESTADISTICAS"
-        android:onClick="pagEstadisticas"
-        android:layout_marginTop="600sp"/>
+        android:text="Ejercicio"
+        android:onClick="pagEjercicio"
+        android:layout_marginTop="500sp"/>
+    <Button
+        android:id="@+id/botonRutina"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="rutina"
+        android:onClick="nuevaRutina"
+        android:layout_marginTop="550sp"/>
+
+    <ImageView
+        android:id="@+id/botonEjcio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_dialog_alert"
+        android:layout_marginTop="700dp"/>
+    <ImageView
+        android:id="@+id/botonEstaditicas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_dialog_alert"
+        android:layout_marginTop="700dp"/>
+    <ImageView
+        android:id="@+id/botonAlimentacio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_dialog_alert"
+        android:layout_marginTop="700dp"/>
 
 
 </RelativeLayout>

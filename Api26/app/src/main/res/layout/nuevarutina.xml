@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/main"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity"
+android:background="#AFFFFD">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Introduce el nombre y los ejercicios que quieras realizar en durante esta rutina."
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="60dp"
+        android:textSize="24sp"
+        />
+
+    <TextView
+        android:id="@+id/textonombreRutina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="170dp"
+        android:text="Introduce el nombre de la rutina"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/nombreRutina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nombre de la rutina"
+        android:inputType="text"
+        android:layout_marginTop="220dp"/>
+
+
+    <TextView
+        android:id="@+id/textoEjRutina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:text="Introduce un nuevo ejercicio a esta rutina"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ejRutina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nombre del ejercicio"
+        android:inputType="text"
+        android:layout_marginTop="300dp"/>
+
+    <ImageButton
+        android:id="@+id/anadirEjRutina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="350dp"
+        android:layout_marginTop="310dp"
+        android:layout_marginRight="0dp"
+        android:onClick="anadirEjRutina"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+    <TextView
+        android:id="@+id/textoDia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Introduce los días que quieras realizar esta rutina"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="360dp"
+        android:textSize="15sp"
+        />
+
+    <CheckBox
+        android:id="@+id/checkbox_monday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lunes"
+        android:layout_marginTop="380dp"/>
+
+    <CheckBox
+        android:id="@+id/checkbox_tuesday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Martes"
+        android:layout_marginTop="380dp"
+        android:layout_marginLeft="80dp"/>
+
+    <CheckBox
+        android:id="@+id/checkbox_wednesday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Miércoles"
+        android:layout_marginTop="380dp"
+        android:layout_marginLeft="160dp"/>/>
+
+    <CheckBox
+        android:id="@+id/checkbox_thursday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jueves"
+        android:layout_marginTop="380dp"
+        android:layout_marginLeft="260dp"/>/>
+
+    <CheckBox
+        android:id="@+id/checkbox_friday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Viernes"
+        android:layout_marginTop="400dp"
+        />
+
+    <CheckBox
+        android:id="@+id/checkbox_saturday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sábado"
+        android:layout_marginTop="400dp"
+        android:layout_marginLeft="80dp"/>
+
+    <CheckBox
+        android:id="@+id/checkbox_sunday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Domingo"
+        android:layout_marginTop="400dp"
+        android:layout_marginLeft="160dp"/>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="500sp"
+        android:id="@+id/anadirRutina"
+        android:text="Finalizar"
+        android:onClick="handleCheckboxSelection"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="650sp"
+        android:id="@+id/BotonVolver"
+        android:text="Volver"
+        android:onClick="volver"/>
+
+
+</RelativeLayout>

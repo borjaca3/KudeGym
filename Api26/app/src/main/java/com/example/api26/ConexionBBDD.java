@@ -10,7 +10,9 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.time.LocalDate;
-
+import android.database.Cursor;
+import android.widget.Toast;
+import android.util.Log;
 
 public class ConexionBBDD   {
 
@@ -212,6 +214,102 @@ public class ConexionBBDD   {
     }
 
 
+    public void insertPerfil(ContentValues registro) {
+        SQLiteDatabase baseDatos = dbHelper.getWritableDatabase();
 
 
+        baseDatos.insert("perfil",null,registro );
+
+    }
+
+    public void insertRutina(String rutina) {
+        SQLiteDatabase baseDatos = dbHelper.getWritableDatabase();
+        ContentValues reg = new ContentValues();
+        reg.put("nombre",rutina);
+        baseDatos.insert("rutina",null,reg );
+
+    }
+
+    public void insertEjercicio(String ejercicio) {
+        SQLiteDatabase baseDatos = dbHelper.getWritableDatabase();
+        ContentValues reg = new ContentValues();
+        reg.put("nombre",ejercicio);
+        baseDatos.insert("ejercicios",null,reg );
+
+    }
+    public void insertRutinaEjercicio(int rutina , int ejercicio) {
+        SQLiteDatabase baseDatos = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("id_rutina", rutina);
+        values.put("id_ejercicio", ejercicio);
+        baseDatos.insert("RutinaEjercicio",null,values );
+    }
+    public void insertRutinaDia(int rutina, int dia) {
+        SQLiteDatabase baseDatos = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("id_rutina", rutina);
+        values.put("id_dia", dia);
+        baseDatos.insert("RutinaDias",null,values );
+    }
+
+    public int obtenerCodigoRutina (String rutina){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        int codigo=0;
+        String codigoQuery = "SELECT codigo_rutina FROM rutina WHERE nombre = ? LIMIT 1";
+        Cursor cursor = db.rawQuery(codigoQuery, new String[] { rutina });
+        if (cursor.moveToFirst()) {
+            codigo = cursor.getInt(0);
+        }
+        cursor.close();
+        return codigo;
+    }
+    public int obtenerCodigoEjercicio (String ejercicio){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        int codigo=0;
+        String codigoQuery = "SELECT codigo_ejercicio FROM ejercicios WHERE nombre = ? LIMIT 1";
+        Cursor cursor = db.rawQuery(codigoQuery, new String[] { ejercicio });
+        if (cursor.moveToFirst()) {
+            codigo = cursor.getInt(0);
+        }
+        cursor.close();
+        return codigo;
+    }
+
+
+    public void insertdias() {
+        SQLiteDatabase baseDatos = dbHelper.getWritableDatabase();
+        ContentValues reg = new ContentValues();
+        reg.put("dias","MONDAY");
+        baseDatos.insert("dias",null,reg );
+        reg.put("dias","TUESDAY");
+        baseDatos.insert("dias",null,reg );
+        reg.put("dias","WEDNESDAY");
+        baseDatos.insert("dias",null,reg );
+        reg.put("dias","THURSDAY");
+        baseDatos.insert("dias",null,reg );
+        reg.put("dias","FRIDAY");
+        baseDatos.insert("dias",null,reg );
+        reg.put("dias","SATURDAY");
+        baseDatos.insert("dias",null,reg );
+        reg.put("dias","SUNDAY");
+        baseDatos.insert("dias",null,reg );
+
+    }
+
+    private static final String TAG = MainActivity.class.getSimpleName(); // Etiqueta para el log
+    public Cursor getRutinasPorDia(String dia) {
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String query = "SELECT r.nombre FROM rutina AS r " +
+                "JOIN RutinaDias AS rd ON r.codigo_rutina = rd.id_rutina " +
+                "JOIN dias AS d ON rd.id_dia = d.codigo_dias " +
+                "WHERE d.dias = ?";
+
+
+        // Realizar la consulta y devolver el Cursor resultante
+        return db.rawQuery(query, new String[]{dia});
+
+
+
+    }
 }
