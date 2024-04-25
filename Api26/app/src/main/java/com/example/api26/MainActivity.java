@@ -2,6 +2,7 @@ package com.example.api26;
 
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -26,6 +27,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.Arrays;
 
 
@@ -34,13 +37,10 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
 
     Spinner spinner;
-
     EditText aliNombre = null;
+   ProgressBar progressBar;
 
-
-    ProgressBar progressBar;
-
-
+    private BottomNavigationView bottomNavigationView;
     int MAX_PROGRESO=1000;
     int caloriasTotales=0;
 
@@ -56,12 +56,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         //getApplicationContext().deleteDatabase("alimentos");
         //Esta linea elimina la BBDD. Hay que hacerlo cuando cambias la estructura de la BBDD
 
         conexion = new ConexionBBDD(getApplicationContext());
-
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.estadisticas){
+                volverEstadisticas();
+            }else if(itemId == R.id.alimentacion){
+                volverAlimentacion();
+            }else if(itemId == R.id.ejercicio){
+                volverEjercicio();
+            }
+            return true;
+        });
 
         aliNombre=findViewById(R.id.aliHoy);
 
@@ -228,7 +238,20 @@ public class MainActivity extends AppCompatActivity {
         //    Toast.makeText(this, "Alimento guardado ", Toast.LENGTH_SHORT).show();
 
     }
+    public void volverAlimentacion(){
+        Intent intent= new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 
+    public void volverEstadisticas(){
+        Intent intent= new Intent(this, Estadisticas.class);
+        startActivity(intent);
+    }
+
+    public void volverEjercicio(){
+        Intent intent= new Intent(this, Formulario.class);
+        startActivity(intent);
+    }
 
 
 
