@@ -1,4 +1,5 @@
 package com.example.api26;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -69,6 +70,10 @@ public class Estadisticas extends AppCompatActivity {
         mGridView.setAdapter(mCalendarAdapter);
         SimpleDateFormat sdf = new SimpleDateFormat("MMMM yyyy", Locale.getDefault());
         mMonthTextView.setText(sdf.format(mCalendar.getTime()));
+    }
+    public void volver(View view){
+        Intent intent= new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
 

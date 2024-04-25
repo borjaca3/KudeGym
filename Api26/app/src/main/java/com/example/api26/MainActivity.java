@@ -73,8 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progressBar); // Inicializa la referencia al ProgressBar
 
-        barraPro();
-        guardarDia();
+
         ////////////////////////////////////////// solo la primera vez que se ejecuta
         /*SQLITE con = new SQLITE(this, "alimentos", null, 1);
         SQLiteDatabase baseDatos = con.getWritableDatabase();
@@ -92,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
 
         baseDatos.insert("objetivo",null,registro );*/
         ///////////////////////////////////////
+
+        barraPro();
+        guardarDia();
 
 
         boton=(Button)findViewById(R.id.botonPasar);
@@ -144,37 +146,40 @@ public class MainActivity extends AppCompatActivity {
 
     public  void objetivo (View view){
         String objetivoSeleccionado = spinner.getSelectedItem().toString();
-        Boolean per=true;
+        if (objetivoSeleccionado.equals("Objetivo")){
+            Toast.makeText(this, "Elige un objetivo " , Toast.LENGTH_SHORT).show();
+        }else{
+            Boolean per=true;
 
 
 
 
-        if (objetivoSeleccionado.equals("Volumen")) {
-            MAX_PROGRESO = 1000;
-        } else if (objetivoSeleccionado.equals("Deficit")) {
-            MAX_PROGRESO = 500;
-        } else if (objetivoSeleccionado.equals("Mantenimiento")) {
-            MAX_PROGRESO = 750;
-        } else if (objetivoSeleccionado.equals("Personalizado")) {
-            per=false;
-            Intent intent= new Intent(MainActivity.this, PersonalizaObjetivo.class);
-            startActivity(intent);
-        }
-        if( per) {
+            if (objetivoSeleccionado.equals("Volumen")) {
+                MAX_PROGRESO = 1000;
+            } else if (objetivoSeleccionado.equals("Deficit")) {
+                MAX_PROGRESO = 500;
+            } else if (objetivoSeleccionado.equals("Mantenimiento")) {
+                MAX_PROGRESO = 750;
+            } else if (objetivoSeleccionado.equals("Personalizado")) {
+                per=false;
+                Intent intent= new Intent(MainActivity.this, PersonalizaObjetivo.class);
+                startActivity(intent);
+            }
+            if( per) {
 
-            int c=conexion.devolverCal();
-            int codigo=conexion.obtenerUtlimoCodigo();
+                int c=conexion.devolverCal();
+                int codigo=conexion.obtenerUtlimoCodigo();
 
-            ContentValues registro = new ContentValues();
-            registro.put("codigo", codigo);
-            registro.put("caloriasObjetivo", MAX_PROGRESO);
-            registro.put("calorias", c);
-            registro.put("fecha",LocalDate.now().toString());
+                ContentValues registro = new ContentValues();
+                registro.put("codigo", codigo);
+                registro.put("caloriasObjetivo", MAX_PROGRESO);
+                registro.put("calorias", c);
+                registro.put("fecha",LocalDate.now().toString());
 
-            conexion.updateObjetivo(codigo,registro);
+                conexion.updateObjetivo(codigo,registro);
 
 
-            barraPro();
+                barraPro();}
         }
 
 
@@ -224,6 +229,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void pagEstadisticas (View view) {
         Intent intent = new Intent(MainActivity.this, Estadisticas.class);
+        startActivity(intent);
+        //    Toast.makeText(this, "Alimento guardado ", Toast.LENGTH_SHORT).show();
+
+    }
+    public void pagEjercicio (View view) {
+        Intent intent = new Intent(MainActivity.this, Ejercicio.class);
+        startActivity(intent);
+        //    Toast.makeText(this, "Alimento guardado ", Toast.LENGTH_SHORT).show();
+
+    }
+    public void nuevaRutina (View view) {
+        Intent intent = new Intent(MainActivity.this, Rutina.class);
         startActivity(intent);
         //    Toast.makeText(this, "Alimento guardado ", Toast.LENGTH_SHORT).show();
 
