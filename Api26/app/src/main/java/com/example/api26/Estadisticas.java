@@ -18,22 +18,39 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class Estadisticas extends AppCompatActivity {
     private Calendar mCalendar;
     private GridView mGridView;
     private CalendarAdapter mCalendarAdapter;
     private TextView mMonthTextView;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.estadisticas);
-
         mGridView = findViewById(R.id.gridView);
         mMonthTextView = findViewById(R.id.monthTextView);
 
         mCalendar = Calendar.getInstance();
         updateCalendar();
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.estadisticas){
+                volverEstadisticas();
+            }else if(itemId == R.id.alimentacion){
+                volverAlimentacion();
+            }else if(itemId == R.id.ejercicio){
+                volverEjercicio();
+            }
+            return true;
+        });
+
+
+
 
         findViewById(R.id.prevMonthButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,9 +88,25 @@ public class Estadisticas extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("MMMM yyyy", Locale.getDefault());
         mMonthTextView.setText(sdf.format(mCalendar.getTime()));
     }
+
     public void volver(View view){
         Intent intent= new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+    public void volverAlimentacion(){
+        Intent intent= new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void volverEstadisticas(){
+        Intent intent= new Intent(this, Estadisticas.class);
+        startActivity(intent);
+    }
+
+    public void volverEjercicio(){
+        Intent intent= new Intent(this, Formulario.class);
+        startActivity(intent);
+    }
+
 }
 

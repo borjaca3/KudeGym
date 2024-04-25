@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Alimentacion"
+        android:icon="@drawable/ic_baseline_breakfast_dining_24"
+        android:id="@+id/alimentacion"/>
+    <item android:title="Ejercicio"
+        android:icon="@drawable/ic_baseline_cottage_24"
+        android:id="@+id/ejercicio"/>
+    <item android:title="Estadisticas"
+        android:icon="@drawable/ic_baseline_calendar_month_24"
+        android:id="@+id/estadisticas"/>
+</menu>

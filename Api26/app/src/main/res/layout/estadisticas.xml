@@ -8,14 +8,52 @@
     tools:context=".MainActivity"
     android:background="#AFFFFD">
 
+    <Button
+        android:id="@+id/prevMonthButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="anterior"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/gridView"
+        android:layout_marginTop="16dp"/>
 
     <Button
+        android:id="@+id/nextMonthButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="siguiente"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/gridView"
+        android:layout_marginTop="16dp"/>
+    <TextView
+        android:id="@+id/monthTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/gridView"/>
+
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="304dp"
+        android:layout_below="@id/textView3"
+        android:horizontalSpacing="10dp"
+        android:numColumns="7"
+        android:verticalSpacing="10dp"/>
+
+
+    <Button
+        android:id="@+id/BotonVolver"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="650sp"
-        android:id="@+id/BotonVolver"
-        android:text="Volver"
-        android:onClick="volver"/>
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="550sp"
+        android:layout_marginEnd="-7dp"
+        android:onClick="volver"
+        android:text="agur" />
 
     <TextView
         android:id="@+id/textView3"
@@ -27,12 +65,30 @@
         android:fontFamily="sans-serif-black"
         android:text="ESTADÍSTICAS" />
 
-    <Button
-        android:id="@+id/botonCalendario"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Abrir el calendario"
-        android:onClick="abrirCalendario"
-        android:layout_marginTop="400sp"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="587dp"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/botton_nav_menu">
+
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
 
 </RelativeLayout>

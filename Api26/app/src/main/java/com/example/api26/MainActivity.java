@@ -2,6 +2,7 @@ package com.example.api26;
 
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -26,6 +27,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.Arrays;
 
 
@@ -40,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     ProgressBar progressBar;
 
-
+    private BottomNavigationView bottomNavigationView;
     int MAX_PROGRESO=1000;
     int caloriasTotales=0;
 
@@ -61,7 +64,18 @@ public class MainActivity extends AppCompatActivity {
         //Esta linea elimina la BBDD. Hay que hacerlo cuando cambias la estructura de la BBDD
 
         conexion = new ConexionBBDD(getApplicationContext());
-
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.estadisticas){
+                volverEstadisticas();
+            }else if(itemId == R.id.alimentacion){
+                volverAlimentacion();
+            }else if(itemId == R.id.ejercicio){
+                volverEjercicio();
+            }
+            return true;
+        });
 
         aliNombre=findViewById(R.id.aliHoy);
 
@@ -73,7 +87,8 @@ public class MainActivity extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progressBar); // Inicializa la referencia al ProgressBar
 
-
+        barraPro();
+        guardarDia();
         ////////////////////////////////////////// solo la primera vez que se ejecuta
         /*SQLITE con = new SQLITE(this, "alimentos", null, 1);
         SQLiteDatabase baseDatos = con.getWritableDatabase();
@@ -91,9 +106,6 @@ public class MainActivity extends AppCompatActivity {
 
         baseDatos.insert("objetivo",null,registro );*/
         ///////////////////////////////////////
-
-        barraPro();
-        guardarDia();
 
 
         boton=(Button)findViewById(R.id.botonPasar);
@@ -154,32 +166,32 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-            if (objetivoSeleccionado.equals("Volumen")) {
-                MAX_PROGRESO = 1000;
-            } else if (objetivoSeleccionado.equals("Deficit")) {
-                MAX_PROGRESO = 500;
-            } else if (objetivoSeleccionado.equals("Mantenimiento")) {
-                MAX_PROGRESO = 750;
-            } else if (objetivoSeleccionado.equals("Personalizado")) {
-                per=false;
-                Intent intent= new Intent(MainActivity.this, PersonalizaObjetivo.class);
-                startActivity(intent);
-            }
-            if( per) {
+        if (objetivoSeleccionado.equals("Volumen")) {
+            MAX_PROGRESO = 1000;
+        } else if (objetivoSeleccionado.equals("Deficit")) {
+            MAX_PROGRESO = 500;
+        } else if (objetivoSeleccionado.equals("Mantenimiento")) {
+            MAX_PROGRESO = 750;
+        } else if (objetivoSeleccionado.equals("Personalizado")) {
+            per=false;
+            Intent intent= new Intent(MainActivity.this, PersonalizaObjetivo.class);
+            startActivity(intent);
+        }
+        if( per) {
 
-                int c=conexion.devolverCal();
-                int codigo=conexion.obtenerUtlimoCodigo();
+            int c=conexion.devolverCal();
+            int codigo=conexion.obtenerUtlimoCodigo();
 
-                ContentValues registro = new ContentValues();
-                registro.put("codigo", codigo);
-                registro.put("caloriasObjetivo", MAX_PROGRESO);
-                registro.put("calorias", c);
-                registro.put("fecha",LocalDate.now().toString());
+            ContentValues registro = new ContentValues();
+            registro.put("codigo", codigo);
+            registro.put("caloriasObjetivo", MAX_PROGRESO);
+            registro.put("calorias", c);
+            registro.put("fecha",LocalDate.now().toString());
 
-                conexion.updateObjetivo(codigo,registro);
+            conexion.updateObjetivo(codigo,registro);
 
 
-                barraPro();}
+            barraPro();
         }
 
 
@@ -233,25 +245,23 @@ public class MainActivity extends AppCompatActivity {
         //    Toast.makeText(this, "Alimento guardado ", Toast.LENGTH_SHORT).show();
 
     }
-    public void pagEjercicio (View view) {
-        Intent intent = new Intent(MainActivity.this, Ejercicio.class);
+    public void volverAlimentacion(){
+        Intent intent= new Intent(this, MainActivity.class);
         startActivity(intent);
-        //    Toast.makeText(this, "Alimento guardado ", Toast.LENGTH_SHORT).show();
-
-    }
-    public void nuevaRutina (View view) {
-        Intent intent = new Intent(MainActivity.this, Rutina.class);
-        startActivity(intent);
-        //    Toast.makeText(this, "Alimento guardado ", Toast.LENGTH_SHORT).show();
-
     }
 
+    public void volverEstadisticas(){
+        Intent intent= new Intent(this, Estadisticas.class);
+        startActivity(intent);
+    }
+
+    public void volverEjercicio(){
+        Intent intent= new Intent(this, Formulario.class);
+        startActivity(intent);
+    }
 
 
 
 
-
-
-
-
+}
 }
