@@ -27,6 +27,8 @@
         <activity android:name="ConexionBBDD"/>
         <activity android:name=".Estadisticas"/>
         <activity android:name=".MainActivity"/>
+        <activity android:name=".Rutina"/>
+        <activity android:name=".Ejercicio"/>
     </application>
 
 

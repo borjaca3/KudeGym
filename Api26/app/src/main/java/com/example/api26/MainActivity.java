@@ -37,8 +37,11 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
 
     Spinner spinner;
+
     EditText aliNombre = null;
-   ProgressBar progressBar;
+
+
+    ProgressBar progressBar;
 
     private BottomNavigationView bottomNavigationView;
     int MAX_PROGRESO=1000;
@@ -55,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         //getApplicationContext().deleteDatabase("alimentos");
         //Esta linea elimina la BBDD. Hay que hacerlo cuando cambias la estructura de la BBDD
@@ -154,7 +158,10 @@ public class MainActivity extends AppCompatActivity {
 
     public  void objetivo (View view){
         String objetivoSeleccionado = spinner.getSelectedItem().toString();
-        Boolean per=true;
+        if (objetivoSeleccionado.equals("Objetivo")){
+            Toast.makeText(this, "Elige un objetivo " , Toast.LENGTH_SHORT).show();
+        }else{
+            Boolean per=true;
 
 
 
@@ -256,8 +263,5 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
-
+}
 }
