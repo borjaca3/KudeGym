@@ -36,13 +36,13 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonRutin"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="158dp"
+
         android:layout_marginTop="535dp"
         android:onClick="irRutina"
-        android:text="Entrar " />
+        android:text="Introducir una nueva rutina en la base de datos " />
 
 
 </RelativeLayout>

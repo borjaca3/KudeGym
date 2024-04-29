@@ -113,13 +113,6 @@
        android:text="Añadir nuevo alimento en la base de datos"
        />
 
-    <Button
-        android:id="@+id/botonEstadisticas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ESTADISTICAS"
-        android:onClick="pagEstadisticas"
-        android:layout_marginTop="600sp"/>
 
 
     <ImageView

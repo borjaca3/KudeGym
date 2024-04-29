@@ -60,15 +60,16 @@ android:background="#AFFFFD">
         android:inputType="text"
         android:layout_marginTop="300dp"/>
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/anadirEjRutina"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="350dp"
-        android:layout_marginTop="310dp"
-        android:layout_marginRight="0dp"
+        android:hint="Añadir ejercicio"
+        android:layout_marginTop="340dp"
         android:onClick="anadirEjRutina"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        android:textColor="#FFFFFF"
+        />
+
 
     <TextView
         android:id="@+id/textoDia"
@@ -78,7 +79,7 @@ android:background="#AFFFFD">
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="360dp"
+        android:layout_marginTop="380dp"
         android:textSize="15sp"
         />
 
@@ -87,14 +88,14 @@ android:background="#AFFFFD">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Lunes"
-        android:layout_marginTop="380dp"/>
+        android:layout_marginTop="400dp"/>
 
     <CheckBox
         android:id="@+id/checkbox_tuesday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Martes"
-        android:layout_marginTop="380dp"
+        android:layout_marginTop="400dp"
         android:layout_marginLeft="80dp"/>
 
     <CheckBox
@@ -102,7 +103,7 @@ android:background="#AFFFFD">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Miércoles"
-        android:layout_marginTop="380dp"
+        android:layout_marginTop="400dp"
         android:layout_marginLeft="160dp"/>/>
 
     <CheckBox
@@ -110,7 +111,7 @@ android:background="#AFFFFD">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Jueves"
-        android:layout_marginTop="380dp"
+        android:layout_marginTop="400dp"
         android:layout_marginLeft="260dp"/>/>
 
     <CheckBox
@@ -118,7 +119,7 @@ android:background="#AFFFFD">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Viernes"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="420dp"
         />
 
     <CheckBox
@@ -126,7 +127,7 @@ android:background="#AFFFFD">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sábado"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="420dp"
         android:layout_marginLeft="80dp"/>
 
     <CheckBox
@@ -134,25 +135,25 @@ android:background="#AFFFFD">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Domingo"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="420dp"
         android:layout_marginLeft="160dp"/>
 
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/anadirRutina"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="500sp"
-        android:onClick="handleCheckboxSelection"
+        android:onClick="finRutina"
         android:text="Finalizar" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="650sp"
         android:id="@+id/BotonVolver"
         android:text="Volver"
-        android:onClick="volver"/>
+        android:onClick="volverEj"/>
 
 
 </RelativeLayout>

@@ -30,6 +30,7 @@ para el nuevo alimento que quieres introducir en la base de datos."
         android:inputType="numberSigned"
         android:hint="Calorias"
         android:layout_marginTop="220dp"
+        android:layout_centerHorizontal="true"
         />
 
     <EditText
@@ -39,15 +40,16 @@ para el nuevo alimento que quieres introducir en la base de datos."
         android:ems="10"
         android:hint="Nombre"
         android:inputType="text"
-        android:layout_marginTop="180dp"/>
+        android:layout_marginTop="180dp"
+        android:layout_centerHorizontal="true"/>
 
-    <ImageButton
+    <Button
         android:id="@+id/aliAnadir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="350dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="400dp"
-        android:layout_marginRight="0dp"
+        android:text="Añadir el nuevo alimento en la base de datos"
         android:onClick="insertarAli"
         app:srcCompat="@android:drawable/ic_input_add" />
 

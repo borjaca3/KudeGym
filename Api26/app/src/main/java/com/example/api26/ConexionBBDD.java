@@ -23,6 +23,18 @@ public class ConexionBBDD   {
 
     }
 
+    public boolean vacia() {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+
+        Cursor cursor = db.rawQuery("SELECT * FROM objetivo WHERE codigo = ? ", new String[]{String.valueOf(1)});
+        if (cursor.moveToFirst()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 
 
 
@@ -342,4 +354,63 @@ public class ConexionBBDD   {
         }
 
     }
+
+//metodos para calcuar el objetivo en base a los datos metidos en el perfil
+    public boolean masculino() {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT genero FROM perfil LIMIT 1", null);
+        if (cursor != null && cursor.moveToFirst()) {
+            @SuppressLint("Range") String genero = cursor.getString(cursor.getColumnIndex("genero"));
+            cursor.close(); // Siempre es una buena práctica cerrar el cursor lo antes posible
+            return genero.equals("Masculino");
+        }
+        if (cursor != null) {
+            cursor.close();
+        }
+        return false;
+    }
+
+        @SuppressLint("Range")
+        public float obtenerPeso() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Float peso = null;
+        Cursor cursor = db.query("perfil", new String[] {"peso"}, "codigo = ?", new String[] {String.valueOf(1)}, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            peso = cursor.getFloat(cursor.getColumnIndex("peso"));
+        }
+        cursor.close();
+        db.close();
+        return peso;
+    }
+    @SuppressLint("Range")
+    public float obtenerAltura() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Float altura = null;
+        Cursor cursor = db.query("perfil", new String[] {"altura"}, "codigo = ?", new String[] {String.valueOf(1)}, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            altura = cursor.getFloat(cursor.getColumnIndex("altura"));
+        }
+        cursor.close();
+        db.close();
+        return altura;
+    }
+    @SuppressLint("Range")
+    public float obtenerEdad() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Float edad = null;
+        Cursor cursor = db.query("perfil", new String[] {"edad"}, "codigo = ?", new String[] {String.valueOf(1)}, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            edad = cursor.getFloat(cursor.getColumnIndex("edad"));
+        }
+        cursor.close();
+        db.close();
+        return edad;
+    }
+
 }
+
+
+

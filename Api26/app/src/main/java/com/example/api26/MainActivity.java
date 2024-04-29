@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar progressBar;
 
     private BottomNavigationView bottomNavigationView;
-    int MAX_PROGRESO=1000;
+    float MAX_PROGRESO=1000;
     int caloriasTotales=0;
 
     Button boton;
@@ -89,7 +89,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         ////////////////////////////////////////// solo la primera vez que se ejecuta
-       /* SQLITE con = new SQLITE(this, "alimentos", null, 1);
+        if(conexion.vacia()){
+             SQLITE con = new SQLITE(this, "alimentos", null, 1);
         SQLiteDatabase baseDatos = con.getWritableDatabase();
 
 
@@ -103,8 +104,11 @@ public class MainActivity extends AppCompatActivity {
         registro.put("calorias", 1);
         registro.put("fecha",LocalDate.now().toString());
 
-        baseDatos.insert("objetivo",null,registro );*/
-        ///////////////////////////////////////
+        baseDatos.insert("objetivo",null,registro );
+            ///////////////////////////////////////
+
+        }
+
         barraPro();
         guardarDia();
 
@@ -158,6 +162,15 @@ public class MainActivity extends AppCompatActivity {
 
     public  void objetivo (View view){
         String objetivoSeleccionado = spinner.getSelectedItem().toString();
+        Toast.makeText(this, "altura" + conexion.masculino(),  Toast.LENGTH_SHORT).show();
+        if(conexion.masculino()){
+            MAX_PROGRESO = (float) ((10 * conexion.obtenerPeso()) + (6.25 * conexion.obtenerAltura()) - (5 * conexion.obtenerEdad()) + 5);
+
+
+        }else{
+            MAX_PROGRESO= (float) (10 * conexion.obtenerPeso() * (6.25 *conexion.obtenerAltura())-(5 *conexion.obtenerEdad()) -161);
+        }
+
         if (objetivoSeleccionado.equals("Objetivo")){
             Toast.makeText(this, "Elige un objetivo " , Toast.LENGTH_SHORT).show();
         }else{
@@ -167,11 +180,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         if (objetivoSeleccionado.equals("Volumen")) {
-            MAX_PROGRESO = 1000;
+            MAX_PROGRESO= (float) ((MAX_PROGRESO ) * 1.55)+300;
         } else if (objetivoSeleccionado.equals("Deficit")) {
-            MAX_PROGRESO = 500;
+            MAX_PROGRESO=(float) ((MAX_PROGRESO ) * 1.55)-600;
         } else if (objetivoSeleccionado.equals("Mantenimiento")) {
-            MAX_PROGRESO = 750;
+            MAX_PROGRESO=(float) (MAX_PROGRESO* 1.55);
         } else if (objetivoSeleccionado.equals("Personalizado")) {
             per=false;
             Intent intent= new Intent(MainActivity.this, PersonalizaObjetivo.class);
@@ -239,12 +252,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void pagEstadisticas (View view) {
-        Intent intent = new Intent(MainActivity.this, Estadisticas.class);
-        startActivity(intent);
-        //    Toast.makeText(this, "Alimento guardado ", Toast.LENGTH_SHORT).show();
 
-    }
     public void volverAlimentacion(){
         Intent intent= new Intent(this, MainActivity.class);
         startActivity(intent);

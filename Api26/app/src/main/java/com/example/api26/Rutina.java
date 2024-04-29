@@ -51,10 +51,13 @@ public class Rutina extends Activity {
             conexion.insertEjercicio(ejercicioNombre);
             codigoEjercicio= conexion.obtenerCodigoEjercicio(ejercicioNombre);}
         conexion.insertRutinaEjercicio(codigoRutina,codigoEjercicio);
+        ejRutina.setText("");
 
     }
-    public void handleCheckboxSelection(View view) {
+    public void finRutina(View view) {
         //StringBuilder selectedDays = new StringBuilder("Días seleccionados: ");
+
+        anadirEjRutina(view);//guardar en la bbdd el ejercicio
         String rutinaNombre=nombreRutina.getText().toString();
         int codigoRutina= conexion.obtenerCodigoRutina(rutinaNombre);
 
@@ -66,8 +69,15 @@ public class Rutina extends Activity {
         if (saturday.isChecked()) conexion.insertRutinaDia(codigoRutina,6);
         if (sunday.isChecked()) conexion.insertRutinaDia(codigoRutina,7);
 
+        Intent intent= new Intent(this, Ejercicio.class);
+        startActivity(intent);
+
         // Mostrar los días seleccionados o manejar como desees
         //Toast.makeText(this, selectedDays.toString(), Toast.LENGTH_LONG).show();
+    }
+    public void volverEj(View view){
+        Intent intent= new Intent(this, Ejercicio.class);
+        startActivity(intent);
     }
 
 
