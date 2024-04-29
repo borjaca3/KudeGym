@@ -63,7 +63,7 @@ public class AliEnBBDD extends AppCompatActivity {
 
             conexion.insertAlimentos(registro);
 
-            baseDatos.insert("alimentos",null,registro );
+            //baseDatos.insert("alimentos",null,registro );
 
             aliNombre.setText("");
             aliCalorias.setText("");

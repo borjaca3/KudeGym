@@ -139,12 +139,12 @@ android:background="#AFFFFD">
 
 
     <Button
+        android:id="@+id/anadirRutina"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="500sp"
-        android:id="@+id/anadirRutina"
-        android:text="Finalizar"
-        android:onClick="handleCheckboxSelection"/>
+        android:onClick="handleCheckboxSelection"
+        android:text="Finalizar" />
 
     <Button
         android:layout_width="match_parent"

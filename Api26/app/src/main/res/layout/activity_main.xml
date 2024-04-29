@@ -120,20 +120,7 @@
         android:text="ESTADISTICAS"
         android:onClick="pagEstadisticas"
         android:layout_marginTop="600sp"/>
-    <Button
-        android:id="@+id/botonEjercicio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ejercicio"
-        android:onClick="pagEjercicio"
-        android:layout_marginTop="500sp"/>
-    <Button
-        android:id="@+id/botonRutina"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="rutina"
-        android:onClick="nuevaRutina"
-        android:layout_marginTop="550sp"/>
+
 
     <ImageView
         android:id="@+id/botonEjcio"

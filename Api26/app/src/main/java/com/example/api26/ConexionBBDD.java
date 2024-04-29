@@ -84,9 +84,6 @@ public class ConexionBBDD   {
     }
 
 
-
-
-
     public int devolverCal(){////esta funcion coge las calorias que has consumido hasta el momento
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         int c=-1;
@@ -143,7 +140,6 @@ public class ConexionBBDD   {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.update("objetivo", registro, "codigo=?", new String[]{String.valueOf(codigo)});
     }
-
 
     public void insertAlimentos( ContentValues registro) {
         SQLiteDatabase baseDatos = dbHelper.getWritableDatabase();
@@ -308,8 +304,42 @@ public class ConexionBBDD   {
 
         // Realizar la consulta y devolver el Cursor resultante
         return db.rawQuery(query, new String[]{dia});
+    }
+
+    public Cursor getEjercicioPorRutina(String nombreRutina) {
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String query = "SELECT r.nombre FROM ejercicios AS r " +
+                "JOIN RutinaEjercicio AS rd ON r.codigo_ejercicio = rd.id_ejercicio " +
+                "JOIN rutina AS d ON rd.id_rutina = d.codigo_rutina " +
+                "WHERE d.nombre = ?";
 
 
+        // Realizar la consulta y devolver el Cursor resultante
+        return db.rawQuery(query, new String[]{nombreRutina});
+
+
+
+    }
+
+    public void ejercicioHecho(ContentValues values) {
+        SQLiteDatabase baseDatos = dbHelper.getWritableDatabase();
+
+
+        baseDatos.insert("ejdiario",null,values );
+
+
+    }
+
+    public boolean realizado(String ejercicio) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM ejdiario WHERE fecha = ? AND ejercicio = ?", new String[] {LocalDate.now().toString(), ejercicio});
+        if (cursor.moveToFirst()) {
+            return true;
+        }else {
+            return false;
+        }
 
     }
 }

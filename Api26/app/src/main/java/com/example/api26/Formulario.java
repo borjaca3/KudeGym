@@ -42,7 +42,7 @@ public class Formulario extends Activity {
         spinner.setAdapter(adapter);
 
 
-        conexion.insertdias();
+        //conexion.insertdias();
         //conexion.insertRutina();
         //conexion.insertRutinaDia();ç
 

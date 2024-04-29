@@ -87,10 +87,9 @@ public class MainActivity extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progressBar); // Inicializa la referencia al ProgressBar
 
-        barraPro();
-        guardarDia();
+
         ////////////////////////////////////////// solo la primera vez que se ejecuta
-        /*SQLITE con = new SQLITE(this, "alimentos", null, 1);
+       /* SQLITE con = new SQLITE(this, "alimentos", null, 1);
         SQLiteDatabase baseDatos = con.getWritableDatabase();
 
 
@@ -106,7 +105,8 @@ public class MainActivity extends AppCompatActivity {
 
         baseDatos.insert("objetivo",null,registro );*/
         ///////////////////////////////////////
-
+        barraPro();
+        guardarDia();
 
         boton=(Button)findViewById(R.id.botonPasar);
         boton.setOnClickListener(new View.OnClickListener() {
@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
             conexion.updateObjetivo(codigo,registro);
 
 
-            barraPro();
+            barraPro();}
         }
 
 
@@ -256,12 +256,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void volverEjercicio(){
-        Intent intent= new Intent(this, Formulario.class);
+        Intent intent= new Intent(this, Ejercicio.class);
         startActivity(intent);
     }
 
 
 
 
-}
 }

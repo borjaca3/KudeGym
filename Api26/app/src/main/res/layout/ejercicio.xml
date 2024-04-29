@@ -18,36 +18,31 @@
         android:layout_marginTop="16dp"
         android:layout_centerHorizontal="true"/>
 
+    <ExpandableListView
+        android:id="@+id/expandableListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"/>
+
     <ListView
         android:id="@+id/lvRutinas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvTitle"
         android:layout_marginTop="10dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ejercicios a realizar hoy:"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="300dp"
-        android:textSize="24sp"
-        />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="350dp"
-        app:srcCompat="@drawable/baseline_check_24" />
 
-    <CheckBox
-        android:id="@+id/checkbox_monday"
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonRutin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
-        android:layout_marginTop="380dp"/>
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="158dp"
+        android:layout_marginTop="535dp"
+        android:onClick="irRutina"
+        android:text="Entrar " />
 
 
 </RelativeLayout>
