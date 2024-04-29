@@ -218,35 +218,34 @@ public class MainActivity extends AppCompatActivity {
             String alimento = aliNombre.getText().toString();
             int calorias = conexion.obtenerCaloriasPorNombre(alimento);
 
-            if (calorias != -1) {
-                Toast.makeText(this, "Alimento guardado " , Toast.LENGTH_SHORT).show();
+            if (calorias == -1) {
+                Toast.makeText(this, "El alimento no se encontró en la base de datos." , Toast.LENGTH_SHORT).show();
+                calorias=0;
             } else {
-                Toast.makeText(this, "El alimento no se encontró en la base de datos.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Alimento guardado. ", Toast.LENGTH_SHORT).show();
+
+
+                caloriasTotales = conexion.devolverCal();
+                int obj = conexion.devolverObj();
+
+                caloriasTotales = calorias + caloriasTotales;
+                Toast.makeText(this, "Calorias" + calorias, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Totales: " + caloriasTotales, Toast.LENGTH_SHORT).show();
+
+
+                ContentValues registro = new ContentValues();
+
+                int codigo = conexion.obtenerUtlimoCodigo();
+
+                registro.put("codigo", codigo);
+                registro.put("calorias", caloriasTotales);
+                registro.put("caloriasObjetivo", obj);
+                registro.put("fecha", LocalDate.now().toString());
+
+                conexion.updateObjetivo(codigo, registro);
+
+                barraPro();
             }
-
-
-
-            caloriasTotales=conexion.devolverCal();
-            int obj= conexion.devolverObj();
-
-            caloriasTotales = calorias+caloriasTotales;
-            Toast.makeText(this, "Calorias" + calorias,  Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, "Totales: " + caloriasTotales, Toast.LENGTH_SHORT).show();
-
-
-
-            ContentValues registro = new ContentValues();
-
-            int codigo=conexion.obtenerUtlimoCodigo();
-
-            registro.put("codigo",codigo );
-            registro.put("calorias", caloriasTotales);
-            registro.put("caloriasObjetivo", obj);
-            registro.put("fecha",LocalDate.now().toString());
-
-            conexion.updateObjetivo(codigo,registro);
-
-            barraPro();
         } else {
             // Manejar el caso donde aliNombre o progressBar son nulos
         }

@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:inputType="numberSigned"
+        android:inputType="number"
         android:hint="Repeticiones"
         android:layout_marginTop="260dp"
         />
@@ -39,7 +39,7 @@
         android:layout_centerHorizontal="true"
         android:ems="10"
         android:hint="Peso"
-        android:inputType="numberSigned"
+        android:inputType="number"
         android:layout_marginTop="220dp"/>
     <EditText
         android:id="@+id/series"
@@ -48,7 +48,7 @@
         android:layout_centerHorizontal="true"
         android:ems="10"
         android:hint="series"
-        android:inputType="numberSigned"
+        android:inputType="number"
         android:layout_marginTop="300dp"/>
 
     <Button
