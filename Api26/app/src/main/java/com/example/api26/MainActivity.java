@@ -246,6 +246,7 @@ public class MainActivity extends AppCompatActivity {
 
                 barraPro();
             }
+            aliNombre.setText("");
         } else {
             // Manejar el caso donde aliNombre o progressBar son nulos
         }

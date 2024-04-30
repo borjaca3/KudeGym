@@ -61,7 +61,7 @@ public class Formulario extends Activity {
         String genero = spinner.getSelectedItem().toString();
 
 
-        if(genero.equals("GÃ©nero")){
+        if(genero.equals("Sexo")){
             Toast.makeText(this, "Escoja un gÃ©nero", Toast.LENGTH_SHORT).show();
             return;
         }
