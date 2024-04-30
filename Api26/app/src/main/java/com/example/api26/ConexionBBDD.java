@@ -225,7 +225,7 @@ public class ConexionBBDD   {
     public void insertPerfil(ContentValues registro) {
         SQLiteDatabase baseDatos = dbHelper.getWritableDatabase();
 
-
+        baseDatos.execSQL("DELETE FROM perfil");
         baseDatos.insert("perfil",null,registro );
 
     }
