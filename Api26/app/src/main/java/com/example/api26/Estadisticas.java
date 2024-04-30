@@ -104,7 +104,12 @@ public class Estadisticas extends AppCompatActivity {
     }
 
     public void volverEjercicio(){
-        Intent intent= new Intent(this, Formulario.class);
+        Intent intent= new Intent(this, Ejercicio.class);
+        startActivity(intent);
+    }
+
+    public void irEstadisticasEjercicio(View view){
+        Intent intent= new Intent(this, EstadisticasEjercicio.class);
         startActivity(intent);
     }
 

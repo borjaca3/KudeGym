@@ -18,6 +18,8 @@ import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,10 +28,28 @@ import java.util.List;
 
 public class Ejercicio extends Activity {
     ConexionBBDD conexion;
+    int id, repeticiones,peso,series;
+    String fecha, nombre;
     private ListView listView;
+    private BottomNavigationView bottomNavigationView;
     private List<String> rutinas = new ArrayList<>();
     String semana;
+    public Ejercicio(){
 
+    }
+
+    public Ejercicio(int id,String nombre,String fecha,int repeticiones, int peso, int series ){
+        this.peso=peso;
+        this.nombre=nombre;
+        this.fecha=fecha;
+        this.series=series;
+        this.id=id;
+        this.repeticiones=repeticiones;
+    }
+
+    public int getPeso(){
+        return peso;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +60,18 @@ public class Ejercicio extends Activity {
 
         diasemana();
         loadRoutinesAndExercises();
-
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.estadisticas){
+                volverEstadisticas();
+            }else if(itemId == R.id.alimentacion){
+                volverAlimentacion();
+            }else if(itemId == R.id.ejercicio){
+                volverEjercicio();
+            }
+            return true;
+        });
 
 
     }
@@ -84,5 +115,17 @@ public class Ejercicio extends Activity {
         Intent intent= new Intent(this, Rutina.class);
         startActivity(intent);}
 
+    public void volverEstadisticas(){
+        Intent intent= new Intent(this, Estadisticas.class);
+        startActivity(intent);
+    }
+    public void volverAlimentacion(){
+        Intent intent= new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 
+    public void volverEjercicio(){
+        Intent intent= new Intent(this, Ejercicio.class);
+        startActivity(intent);
+    }
     }

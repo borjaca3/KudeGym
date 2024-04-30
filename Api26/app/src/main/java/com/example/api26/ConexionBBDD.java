@@ -10,6 +10,9 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.database.Cursor;
 import android.widget.Toast;
 import android.util.Log;
@@ -333,6 +336,52 @@ public class ConexionBBDD   {
 
 
     }
+
+    public List<String> getAllEjercicios() {
+        List<String> ejerciciosList = new ArrayList<>();
+        String selectQuery = "SELECT * FROM ejercicios";
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            int columnIndex = cursor.getColumnIndex("nombre");
+            do {
+                String nombre = cursor.getString(columnIndex);
+                ejerciciosList.add(nombre);
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+        db.close();
+        return ejerciciosList;
+    }
+    public List<Ejercicio> getEstadisticasEjercicio(String ejercicio){
+        List<Ejercicio> ejerciciosList = new ArrayList<>();
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String selectQuery = "SELECT * FROM ejdiario WHERE ejercicio = ?";
+        Cursor cursor = db.rawQuery(selectQuery, new String[] { ejercicio });
+        if (cursor != null && cursor.moveToFirst()) {
+            int columnIndexCodigo = cursor.getColumnIndex("codigo");
+            int columnIndexEjercicio = cursor.getColumnIndex("ejercicio");
+            int columnIndexFecha = cursor.getColumnIndex("fecha");
+            int columnIndexRepeticiones = cursor.getColumnIndex("repeticiones");
+            int columnIndexPeso = cursor.getColumnIndex("peso");
+            int columnIndexSeries = cursor.getColumnIndex("series");
+
+            do {
+                int id = cursor.getInt(columnIndexCodigo);
+                String nombre = cursor.getString(columnIndexEjercicio);
+                String fecha = cursor.getString(columnIndexFecha);
+                int repeticiones = cursor.getInt(columnIndexRepeticiones);
+                int peso = cursor.getInt(columnIndexPeso);
+                int series = cursor.getInt(columnIndexSeries);
+
+                Ejercicio ej = new Ejercicio (id, nombre, fecha, repeticiones, peso, series);
+                ejerciciosList.add(ej);
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+        return ejerciciosList;
+    }
+
 
     public void ejercicioHecho(ContentValues values) {
         SQLiteDatabase baseDatos = dbHelper.getWritableDatabase();

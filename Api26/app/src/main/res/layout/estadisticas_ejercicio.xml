@@ -5,65 +5,55 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".EstadisticasEjercicio"
     android:background="#AFFFFD">
 
-    <Button
-        android:id="@+id/prevMonthButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="anterior"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/gridView"
-        android:layout_marginTop="16dp"/>
-
-    <Button
-        android:id="@+id/nextMonthButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="siguiente"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@id/gridView"
-        android:layout_marginTop="16dp"/>
     <TextView
-        android:id="@+id/monthTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:textStyle="bold"
+        android:text="Estadísticas de cada ejercicio"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:layout_below="@id/gridView"/>
+        android:textSize="40dp"
+        android:layout_marginTop="50sp"
+        android:textStyle="bold"
 
-    <GridView
-        android:id="@+id/gridView"
-        android:layout_width="match_parent"
-        android:layout_height="304dp"
-        android:layout_below="@id/textView3"
-        android:horizontalSpacing="10dp"
-        android:numColumns="7"
-        android:verticalSpacing="10dp"/>
+        />
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="259dp"
+        android:layout_height="47dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="157dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/BotonVolver"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="550sp"
-        android:layout_marginEnd="-7dp"
-        android:onClick="irEstadisticasEjercicio"
-        android:text="Estadisticas de cada Ejercicio" />
-
-    <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50sp"
-        android:layout_marginLeft="50dp"
-        android:textSize="45sp"
-        android:fontFamily="sans-serif-black"
-        android:text="ESTADÍSTICAS" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="153dp"
+        android:layout_marginEnd="18dp"
+        android:onClick="cargaGrafico"
+        android:text="Botón"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/spinner" />
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/bar_chart"
+        android:layout_width="match_parent"
+        android:layout_height="421dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="102dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
