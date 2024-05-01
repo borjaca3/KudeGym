@@ -14,22 +14,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rutina de hoy:"
-        android:textSize="24sp"
-        android:layout_marginTop="16dp"
+        android:textSize="50sp"
+        android:layout_marginTop="48dp"
         android:layout_centerHorizontal="true"/>
 
     <ExpandableListView
         android:id="@+id/expandableListView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="120dp"
+        />
 
     <ListView
         android:id="@+id/lvRutinas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvTitle"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+       />
 
 
 

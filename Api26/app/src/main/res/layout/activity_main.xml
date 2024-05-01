@@ -107,7 +107,9 @@
         android:onClick="calculoCalorias"
         app:srcCompat="@android:drawable/ic_input_add" />
 
-    <Button
+
+
+   <Button
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:layout_marginTop="400sp"
@@ -117,24 +119,7 @@
 
 
 
-    <ImageView
-        android:id="@+id/botonEjcio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_dialog_alert"
-        android:layout_marginTop="700dp"/>
-    <ImageView
-        android:id="@+id/botonEstaditicas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_dialog_alert"
-        android:layout_marginTop="700dp"/>
-    <ImageView
-        android:id="@+id/botonAlimentacio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_dialog_alert"
-        android:layout_marginTop="700dp"/>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
