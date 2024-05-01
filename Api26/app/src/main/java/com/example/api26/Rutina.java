@@ -71,11 +71,14 @@ public class Rutina extends Activity {
     public void finRutina(View view) {
         //StringBuilder selectedDays = new StringBuilder("Días seleccionados: ");
 
-
         String rutinaNombre=nombreRutina.getText().toString();
+        String ejercicioNombre=ejRutina.getText().toString();
 
         if( !rutinaNombre.isEmpty()) {
-            anadirEjRutina();//guardar en la bbdd el ejercicio
+            if(!ejercicioNombre.isEmpty()){
+                anadirEjRutina();//guardar en la bbdd el ejercicio
+            }
+
             int codigoRutina = conexion.obtenerCodigoRutina(rutinaNombre);
 
             if (monday.isChecked()) conexion.insertRutinaDia(codigoRutina, 1);

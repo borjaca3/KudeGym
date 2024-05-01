@@ -12,18 +12,19 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="48dp"
         android:text="Elige tu objetivo"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="75dp"
        >
 
     </Spinner>
@@ -31,7 +32,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80sp"
+        android:layout_marginTop="110dp"
         android:id="@+id/botonObjetivo"
         android:text="CAMBIAR OBJETIVO"
         android:onClick="objetivo"
@@ -43,11 +44,9 @@
         android:id="@+id/progressBar"
         android:layout_width="300dp"
         android:layout_height="50dp"
-
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:progressTint="#F44336"
-
-        android:layout_marginTop="120dp"/>
+        android:layout_marginTop="180dp"/>
 
 
     <TextView
@@ -79,7 +78,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="350dp"
         android:textSize="24sp"
         />
 
@@ -91,14 +90,14 @@
         android:ems="10"
         android:hint="Nombre"
         android:inputType="text"
-        android:layout_marginTop="300dp"/>
+        android:layout_marginTop="400dp"/>
 
     <ImageButton
         android:id="@+id/aliAnadirHoy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="350dp"
-        android:layout_marginTop="310dp"
+        android:layout_marginTop="400dp"
         android:layout_marginRight="0dp"
         android:onClick="calculoCalorias"
         app:srcCompat="@android:drawable/ic_input_add" />
@@ -108,31 +107,11 @@
    <Button
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:layout_marginTop="400sp"
+       android:layout_marginTop="500sp"
        android:id="@+id/botonPasar"
        android:text="Añadir nuevo alimento en la base de datos"
        />
 
-
-
-    <ImageView
-        android:id="@+id/botonEjcio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_dialog_alert"
-        android:layout_marginTop="700dp"/>
-    <ImageView
-        android:id="@+id/botonEstaditicas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_dialog_alert"
-        android:layout_marginTop="700dp"/>
-    <ImageView
-        android:id="@+id/botonAlimentacio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_dialog_alert"
-        android:layout_marginTop="700dp"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
