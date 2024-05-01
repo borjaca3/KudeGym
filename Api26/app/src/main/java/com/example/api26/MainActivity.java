@@ -78,8 +78,16 @@ public class MainActivity extends AppCompatActivity {
 
         spinner2 = findViewById(R.id.spinnerAli);
         loadSpinnerData();
-        String texto =spinner2.getSelectedItem().toString();
-        aliNombre = texto.replaceAll("\\s*\\(.*?\\)", "");
+        String texto = null;
+        if (spinner2 != null && spinner2.getSelectedItem() != null) {
+            texto = spinner2.getSelectedItem().toString();
+            aliNombre = texto.replaceAll("\\s*\\(.*?\\)", "");
+        } else {
+            aliNombre = "Añadir alimeto";
+            // Manejar el caso en el que spinner2 es null o no hay ningún elemento seleccionado
+        }
+
+
         Log.d("hola", "aliNombre: " + aliNombre);
         spinner=findViewById(R.id.spinner);
         String[] dropdownitems= getResources().getStringArray(R.array.drowpdownitems);
@@ -251,6 +259,7 @@ public class MainActivity extends AppCompatActivity {
             }
             //aliNombre.setText("");
         } else {
+            Toast.makeText(this, "Error: No se ha seleccionado un alimento.", Toast.LENGTH_SHORT).show();
             // Manejar el caso donde aliNombre o progressBar son nulos
         }
     }

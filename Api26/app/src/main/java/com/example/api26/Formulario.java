@@ -49,8 +49,14 @@ public class Formulario extends Activity {
     }
 
     public void goToMainActivity(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        Boolean existePerfil = conexion.existePerfil();
+        if(existePerfil){
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(this, "No existe ningún perfil. Crea uno nuevo" , Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void nuevoPerfil(View view){

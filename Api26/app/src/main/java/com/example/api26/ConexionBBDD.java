@@ -1,6 +1,7 @@
 package com.example.api26;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -17,12 +18,15 @@ import android.database.Cursor;
 import android.widget.Toast;
 import android.util.Log;
 
-public class ConexionBBDD   {
+public class ConexionBBDD   extends Activity {
 
     private SQLITE dbHelper;
 
     public ConexionBBDD (Context context){
         dbHelper = new  SQLITE(context,"alimentos",null,1);
+
+    }
+    public ConexionBBDD(){
 
     }
 
@@ -224,14 +228,42 @@ public class ConexionBBDD   {
         return false;
     }
 
+    public boolean existePerfil() {
+        SQLiteDatabase baseDatos = dbHelper.getReadableDatabase();
+
+        // Consultar la tabla "perfil" para verificar si tiene alguna entrada
+        Cursor cursor = baseDatos.rawQuery("SELECT COUNT(*) FROM perfil", null);
+        int count = 0;
+        if (cursor != null) {
+            cursor.moveToFirst();
+            count = cursor.getInt(0);
+            cursor.close();
+        }
+
+        // Si count es mayor que 0, significa que hay al menos una entrada
+        return count > 0;
+    }
 
     public void insertPerfil(ContentValues registro) {
         SQLiteDatabase baseDatos = dbHelper.getWritableDatabase();
 
-        baseDatos.execSQL("DELETE FROM perfil");
-        baseDatos.insert("perfil",null,registro );
+        // Verificar si ya existe un perfil en la base de datos
+        Cursor cursor = baseDatos.rawQuery("SELECT COUNT(*) FROM perfil", null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            int count = cursor.getInt(0);
+            cursor.close();
 
+            // Si existe al menos un perfil, eliminarlo antes de insertar el nuevo
+            if (count > 0) {
+                baseDatos.delete("perfil", null, null);
+            }
+        }
+
+        // Insertar el nuevo perfil
+        baseDatos.insert("perfil", null, registro);
     }
+
 
     public void insertRutina(String rutina) {
         SQLiteDatabase baseDatos = dbHelper.getWritableDatabase();
