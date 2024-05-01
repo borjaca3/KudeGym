@@ -107,6 +107,7 @@ public class Ejercicio extends Activity {
 
 
 
+
     private void diasemana() {
         LocalDate fechaActual = LocalDate.now();
         semana= String.valueOf(fechaActual.getDayOfWeek());

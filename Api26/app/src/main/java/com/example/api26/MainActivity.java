@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -30,16 +31,14 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Arrays;
-
-
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    Spinner spinner;
+    Spinner spinner, spinner2;
 
-    EditText aliNombre = null;
-
+    String aliNombre = null;
 
     ProgressBar progressBar;
 
@@ -77,8 +76,11 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
-        aliNombre=findViewById(R.id.aliHoy);
-
+        spinner2 = findViewById(R.id.spinnerAli);
+        loadSpinnerData();
+        String texto =spinner2.getSelectedItem().toString();
+        aliNombre = texto.replaceAll("\\s*\\(.*?\\)", "");
+        Log.d("hola", "aliNombre: " + aliNombre);
         spinner=findViewById(R.id.spinner);
         String[] dropdownitems= getResources().getStringArray(R.array.drowpdownitems);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,dropdownitems);
@@ -92,9 +94,6 @@ public class MainActivity extends AppCompatActivity {
         if(conexion.vacia()){
              SQLITE con = new SQLITE(this, "alimentos", null, 1);
         SQLiteDatabase baseDatos = con.getWritableDatabase();
-
-
-
 
 
         ContentValues registro = new ContentValues();
@@ -123,6 +122,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    private void loadSpinnerData() {
+        List<String> options = conexion.getAllAlimentos();
+        //Log.d("hola","tamaño:"+ options.size());
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, options);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner2.setAdapter(dataAdapter);
+
+    }
 
     private void guardarDia() {
         LocalDate fechaActual = LocalDate.now();
@@ -135,11 +143,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-
-
-
-
 
 
     private void barraPro() {
@@ -162,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
 
     public  void objetivo (View view){
         String objetivoSeleccionado = spinner.getSelectedItem().toString();
-        Toast.makeText(this, "altura" + conexion.masculino(),  Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, "altura" + conexion.masculino(),  Toast.LENGTH_SHORT).show();
         if(conexion.masculino()){
             MAX_PROGRESO = (float) ((10 * conexion.obtenerPeso()) + (6.25 * conexion.obtenerAltura()) - (5 * conexion.obtenerEdad()) + 5);
 
@@ -215,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (aliNombre != null && progressBar != null) {
 
-            String alimento = aliNombre.getText().toString();
+            String alimento = aliNombre;
             int calorias = conexion.obtenerCaloriasPorNombre(alimento);
 
             if (calorias == -1) {
@@ -246,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
 
                 barraPro();
             }
-            aliNombre.setText("");
+            //aliNombre.setText("");
         } else {
             // Manejar el caso donde aliNombre o progressBar son nulos
         }

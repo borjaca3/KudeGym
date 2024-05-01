@@ -50,7 +50,7 @@ public class EstadisticasEjercicio extends AppCompatActivity {
             return true;
         });
         loadSpinnerData();
-        ejercicio = spinner.getSelectedItem().toString();
+
 
     }
 
@@ -64,6 +64,9 @@ public class EstadisticasEjercicio extends AppCompatActivity {
 
     }
     public void cargaGrafico(View view){
+
+        ejercicio = spinner.getSelectedItem().toString();
+
         ejerciciosList = conexion.getEstadisticasEjercicio(ejercicio);
 
         if (ejerciciosList != null && !ejerciciosList.isEmpty()) {

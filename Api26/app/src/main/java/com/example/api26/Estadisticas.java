@@ -26,7 +26,6 @@ public class Estadisticas extends AppCompatActivity {
     private CalendarAdapter mCalendarAdapter;
     private TextView mMonthTextView;
     private BottomNavigationView bottomNavigationView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +47,6 @@ public class Estadisticas extends AppCompatActivity {
             }
             return true;
         });
-
-
 
 
         findViewById(R.id.prevMonthButton).setOnClickListener(new View.OnClickListener() {
@@ -77,6 +74,8 @@ public class Estadisticas extends AppCompatActivity {
                 String selectedDate = sdf.format(mCalendar.getTime());
                 selectedDate = selectedDate.substring(0, 8) + String.format(Locale.getDefault(), "%02d", day);
                 // Aquí puedes hacer algo con la fecha seleccionada, como mostrarla en un Toast
+
+
 
             }
         });

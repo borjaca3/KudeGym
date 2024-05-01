@@ -336,7 +336,23 @@ public class ConexionBBDD   {
 
 
     }
-
+    public List<String> getAllAlimentos() {
+        List<String> ejerciciosList = new ArrayList<>();
+        String selectQuery = "SELECT * FROM alimentos";
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            int columnIndexName = cursor.getColumnIndex("nombre");
+            int columnIndexCal = cursor.getColumnIndex("calorias");
+            do {
+                String nombre = cursor.getString(columnIndexName) + " (" +cursor.getString(columnIndexCal) + " kcal)";
+                ejerciciosList.add(nombre);
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+        db.close();
+        return ejerciciosList;
+    }
     public List<String> getAllEjercicios() {
         List<String> ejerciciosList = new ArrayList<>();
         String selectQuery = "SELECT * FROM ejercicios";
