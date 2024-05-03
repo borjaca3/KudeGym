@@ -321,21 +321,35 @@ public class ConexionBBDD   extends Activity {
 
     public void insertdias() {
         SQLiteDatabase baseDatos = dbHelper.getWritableDatabase();
-        ContentValues reg = new ContentValues();
-        reg.put("dias","MONDAY");
-        baseDatos.insert("dias",null,reg );
-        reg.put("dias","TUESDAY");
-        baseDatos.insert("dias",null,reg );
-        reg.put("dias","WEDNESDAY");
-        baseDatos.insert("dias",null,reg );
-        reg.put("dias","THURSDAY");
-        baseDatos.insert("dias",null,reg );
-        reg.put("dias","FRIDAY");
-        baseDatos.insert("dias",null,reg );
-        reg.put("dias","SATURDAY");
-        baseDatos.insert("dias",null,reg );
-        reg.put("dias","SUNDAY");
-        baseDatos.insert("dias",null,reg );
+
+        // Verificar si ya existe un dia en la base de datos
+        Cursor cursor = baseDatos.rawQuery("SELECT COUNT(*) FROM dias", null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            int count = cursor.getInt(0);
+            cursor.close();
+
+            // Si existe al menos un perfil, eliminarlo antes de insertar el nuevo
+            if (count > 0) {
+            }else{
+                ContentValues reg = new ContentValues();
+                reg.put("dias","MONDAY");
+                baseDatos.insert("dias",null,reg );
+                reg.put("dias","TUESDAY");
+                baseDatos.insert("dias",null,reg );
+                reg.put("dias","WEDNESDAY");
+                baseDatos.insert("dias",null,reg );
+                reg.put("dias","THURSDAY");
+                baseDatos.insert("dias",null,reg );
+                reg.put("dias","FRIDAY");
+                baseDatos.insert("dias",null,reg );
+                reg.put("dias","SATURDAY");
+                baseDatos.insert("dias",null,reg );
+                reg.put("dias","SUNDAY");
+                baseDatos.insert("dias",null,reg );
+            }
+        }
+
 
     }
 
