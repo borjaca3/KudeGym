@@ -248,8 +248,8 @@ public class MainActivity extends AppCompatActivity {
                 int obj = conexion.devolverObj();
 
                 caloriasTotales = calorias + caloriasTotales;
-                Toast.makeText(this, "Calorias" + calorias, Toast.LENGTH_SHORT).show();
-                Toast.makeText(this, "Totales: " + caloriasTotales, Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(this, "Calorias" + calorias, Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(this, "Totales: " + caloriasTotales, Toast.LENGTH_SHORT).show();
 
 
                 ContentValues registro = new ContentValues();

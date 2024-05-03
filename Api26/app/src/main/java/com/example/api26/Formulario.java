@@ -69,7 +69,7 @@ public class Formulario extends Activity {
 
 
         if(genero.equals("Sexo")){
-            Toast.makeText(this, "Escoja un gÃ©nero", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Escoja un sexo", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -89,6 +89,7 @@ public class Formulario extends Activity {
             registro.put("peso", peso);
             registro.put("genero", genero);
             conexion.insertPerfil(registro);
+            goToMainActivity(view);
         } else {
             Toast.makeText(this, "Debe rellenar todos los campos. " , Toast.LENGTH_SHORT).show();
         }
