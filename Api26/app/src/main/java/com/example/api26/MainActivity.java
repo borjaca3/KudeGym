@@ -179,7 +179,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         }else{
-            MAX_PROGRESO= (float) (10 * conexion.obtenerPeso() * (6.25 *conexion.obtenerAltura())-(5 *conexion.obtenerEdad()) -161);
+            MAX_PROGRESO= (float) ((10 * conexion.obtenerPeso()) + (6.25 * conexion.obtenerAltura()) - (5 * conexion.obtenerEdad()) -161);
+            Toast.makeText(this, "altura"+MAX_PROGRESO+"  " + conexion.obtenerAltura()+" "+conexion.obtenerPeso()+" "+conexion.obtenerEdad(),  Toast.LENGTH_SHORT).show();
         }
 
         if (objetivoSeleccionado.equals("Objetivo")){
