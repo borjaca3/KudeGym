@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class PersonalizaObjetivo extends AppCompatActivity {
 
     EditText objetivo = null;
-    private SQLITE dbHelper;
+
     ConexionBBDD conexion;
 
     @SuppressLint("MissingInflatedId")
@@ -31,8 +31,6 @@ public class PersonalizaObjetivo extends AppCompatActivity {
     }
     public void personalizaObjetivo(View view) {
         String objetivoStr = objetivo.getText().toString();
-        dbHelper = new SQLITE(PersonalizaObjetivo.this, "alimentos", null, 1);
-        SQLiteDatabase db2 = dbHelper.getWritableDatabase();
 
         ContentValues registro = new ContentValues();
         int codigo= conexion.obtenerUtlimoCodigo();

@@ -223,6 +223,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void calculoCalorias(View view){
+        String texto = null;
+        if (spinner2 != null && spinner2.getSelectedItem() != null) {
+            texto = spinner2.getSelectedItem().toString();
+            aliNombre = texto.replaceAll("\\s*\\(.*?\\)", "");
+        } else {
+            aliNombre = "Añadir alimeto";
+            // Manejar el caso en el que spinner2 es null o no hay ningún elemento seleccionado
+        }
 
         if (aliNombre != null && progressBar != null) {
 
