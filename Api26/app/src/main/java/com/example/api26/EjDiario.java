@@ -16,7 +16,7 @@ import java.time.LocalDate;
 public class EjDiario extends Activity {
 
     ConexionBBDD conexion;
-
+    EditText comentarios = null;
     EditText repeticiones  = null;
     EditText peso = null;
     EditText series = null;
@@ -30,7 +30,9 @@ public class EjDiario extends Activity {
         peso=findViewById(R.id.peso);
         repeticiones=findViewById(R.id.repeticiones);
         series=findViewById(R.id.series);
+        comentarios = findViewById(R.id.comentarios);
         conexion = new ConexionBBDD(getApplicationContext());
+
 
         // Recibe el nombre del ejercicio enviado por el Intent
         nombreEjercicio = getIntent().getStringExtra("nombreEjercicio");
@@ -47,6 +49,7 @@ public class EjDiario extends Activity {
         String repeticionesStr = repeticiones.getText().toString();
         String pesoStr = peso.getText().toString();
         String seriesStr = series.getText().toString();
+        String comentariosString = comentarios.getText().toString();
 
         if( pesoStr.isEmpty()==false && repeticionesStr.isEmpty()==false){
             ContentValues registro = new ContentValues();
@@ -57,6 +60,7 @@ public class EjDiario extends Activity {
             registro.put("repeticiones", repeticionesStr);
             registro.put("peso", pesoStr);
             registro.put("series", seriesStr);
+            registro.put("comentarios",comentariosString );
 
 
             conexion.ejercicioHecho(registro);

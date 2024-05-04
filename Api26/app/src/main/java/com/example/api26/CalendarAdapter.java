@@ -1,3 +1,4 @@
+
 package com.example.api26;
 // CalendarAdapter.java
 import android.content.Context;
@@ -13,7 +14,8 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class CalendarAdapter extends BaseAdapter {
-
+    public int cal=0;
+    public int obj=0;
     private Context mContext;
     private Calendar mCalendar;
     private ConexionBBDD mConexionBBDD;
@@ -83,7 +85,10 @@ public class CalendarAdapter extends BaseAdapter {
                 selectedDate = selectedDate.substring(0, 8) + String.format(Locale.getDefault(), "%02d", day);
                 // Mostrar la fecha seleccionada en un Toast
                 Toast.makeText(mContext, "Calorias consumidas: " + mConexionBBDD.obtenerCaloriasPorFecha(selectedDate)
-                        + "\nCalorias obetivo" + mConexionBBDD.obtenerObjetivoPorFecha(selectedDate), Toast.LENGTH_SHORT).show();
+                        + "\nCalorias obetivo: " + mConexionBBDD.obtenerObjetivoPorFecha(selectedDate), Toast.LENGTH_SHORT).show();
+
+              //  obj = mConexionBBDD.obtenerObjetivoPorFecha(selectedDate);
+              //  cal = mConexionBBDD.obtenerCaloriasPorFecha(selectedDate);
             }
         });
 

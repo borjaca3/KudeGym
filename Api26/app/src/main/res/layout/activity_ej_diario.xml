@@ -8,7 +8,11 @@
     tools:context=".EjDiario"
     android:background="#AFFFFD">
 
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/fondo" />
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -50,6 +54,15 @@
         android:hint="series"
         android:inputType="number"
         android:layout_marginTop="300dp"/>
+    <EditText
+        android:id="@+id/comentarios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="Comentarios"
+        android:inputType="text"
+        android:layout_marginTop="340dp"/>
 
     <Button
         android:layout_width="match_parent"

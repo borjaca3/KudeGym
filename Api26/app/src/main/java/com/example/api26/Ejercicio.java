@@ -29,7 +29,7 @@ import java.util.List;
 public class Ejercicio extends Activity {
     ConexionBBDD conexion;
     int id, repeticiones,peso,series;
-    String fecha, nombre;
+    String fecha, nombre, comentarios;
     private ListView listView;
     private BottomNavigationView bottomNavigationView;
     private List<String> rutinas = new ArrayList<>();
@@ -37,7 +37,6 @@ public class Ejercicio extends Activity {
     public Ejercicio(){
 
     }
-
     public Ejercicio(int id,String nombre,String fecha,int repeticiones, int peso, int series ){
         this.peso=peso;
         this.nombre=nombre;
@@ -45,6 +44,16 @@ public class Ejercicio extends Activity {
         this.series=series;
         this.id=id;
         this.repeticiones=repeticiones;
+
+    }
+    public Ejercicio(int id,String nombre,String fecha,int repeticiones, int peso, int series, String com ){
+        this.peso=peso;
+        this.nombre=nombre;
+        this.fecha=fecha;
+        this.series=series;
+        this.id=id;
+        this.repeticiones=repeticiones;
+        this.comentarios=com;
     }
 
     public int getPeso(){

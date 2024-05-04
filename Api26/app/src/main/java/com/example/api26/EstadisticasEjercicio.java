@@ -3,9 +3,11 @@ package com.example.api26;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,7 +27,11 @@ import java.util.List;
 public class EstadisticasEjercicio extends AppCompatActivity {
     private ConexionBBDD conexion;
     private Spinner spinner = null;
+    private Spinner spinnerFecha = null;
+    String fecha;
+    TextView comentarios, series, peso, repeticiones;
     private List<Ejercicio> ejerciciosList;
+    Ejercicio ejDiario;
     private BarChart barChart;
     private BottomNavigationView bottomNavigationView;
     String ejercicio;
@@ -34,6 +40,7 @@ public class EstadisticasEjercicio extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.estadisticas_ejercicio);
         spinner = findViewById(R.id.spinner);
+        spinnerFecha = findViewById(R.id.spinnerFecha);
         conexion = new ConexionBBDD(getApplicationContext());
         barChart = findViewById(R.id.bar_chart);
 
@@ -49,6 +56,12 @@ public class EstadisticasEjercicio extends AppCompatActivity {
             }
             return true;
         });
+
+        series = findViewById(R.id.series);
+        repeticiones = findViewById(R.id.repeticiones);
+        comentarios = findViewById(R.id.comentarios);
+        peso = findViewById(R.id.peso);
+
         loadSpinnerData();
 
 
@@ -61,6 +74,27 @@ public class EstadisticasEjercicio extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, options);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
+
+    }
+
+    private void loadSpinnerFecha(String ejercicio) {
+        List<String> fechas = conexion.getAllFechas(ejercicio);
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, fechas);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerFecha.setAdapter(dataAdapter);
+
+    }
+
+    public void cargaEjercicios(View view){
+        fecha = spinnerFecha.getSelectedItem().toString();
+        ejDiario = conexion.getEstadisticasEjercicioFecha(ejercicio, fecha);
+     //   Log.d("hola", "series" + ejDiario.series);
+        series.setText("Series: " + ejDiario.series);
+        comentarios.setText("Comentarios: " + ejDiario.comentarios);
+        peso.setText("Peso: " + ejDiario.peso);
+        repeticiones.setText("Repeticiones: " + ejDiario.repeticiones);
 
     }
     public void cargaGrafico(View view){
@@ -115,6 +149,7 @@ public class EstadisticasEjercicio extends AppCompatActivity {
             barChart.setDrawValueAboveBar(true); // Mostrar los valores encima de las barras
             barChart.invalidate(); // Actualizar el gráfico
 
+            loadSpinnerFecha(ejercicio);
         }
     }
 

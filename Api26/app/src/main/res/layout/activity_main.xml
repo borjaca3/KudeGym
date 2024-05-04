@@ -8,118 +8,172 @@
     tools:context=".MainActivity"
     android:background="#AFFFFD">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/fondo" />
+
+
+    <!-- Primer CardView -->
+
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Elige tu objetivo"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentStart="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="40dp"
+        android:fontFamily="sans-serif-black"
+        android:text="ALIMENTACION"
+        android:textSize="35sp" />
 
-    <Spinner
-        android:id="@+id/spinner"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-       >
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="100dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="20dp"
+        >
 
-    </Spinner>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+            <!-- Contenido del primer CardView -->
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif-light"
+                android:text="Elige tu objetivo"
+                android:textSize="24sp" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"/>
+
+
+            <Button
+                android:id="@+id/botonObjetivo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/boton_1"
+                android:layout_marginTop="10dp"
+                android:onClick="objetivo"
+                android:text="CAMBIAR OBJETIVO" />
+
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Segundo CardView -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardView1"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="20dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+            <!-- Contenido del segundo CardView -->
+            <TextView
+                android:id="@+id/textoAlihoy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Introduce alimento consumido hoy"
+                android:fontFamily="sans-serif-light"
+                android:layout_marginTop="10dp"
+                android:textSize="24sp" />
+
+            <Spinner
+                android:id="@+id/spinnerAli"
+                android:layout_width="259dp"
+                android:layout_height="47dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="10dp"/>
+
+
+            <Button
+                android:id="@+id/aliAnadirHoy"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginLeft="255dp"
+                android:layout_marginTop="-50dp"
+                android:onClick="calculoCalorias"
+                android:text="AÑADIR"
+                android:background="@drawable/boton_1"
+                android:textSize="10dp"
+                android:paddingStart="1dp"
+                android:paddingEnd="1dp"
+                />
+
+            <TextView
+                android:id="@+id/textViewCalorias"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Calorías:"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textViewObjetivo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="Objetivo:"
+                android:textSize="18sp" />
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:progressTint="#F44336" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Botón fuera de los CardView -->
 
     <Button
+        android:id="@+id/botonPasar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80sp"
-        android:id="@+id/botonObjetivo"
-        android:text="CAMBIAR OBJETIVO"
-        android:onClick="objetivo"
-        android:backgroundTint="#FFA500"
-
-        />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:progressTint="#F44336"
-
-        android:layout_marginTop="120dp"/>
-
-
-    <TextView
-        android:id="@+id/textViewCalorias"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Calorías:"
-        android:textSize="18sp"
-        android:layout_below="@id/progressBar"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"/>
-
-    <TextView
-        android:id="@+id/textViewObjetivo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Objetivo:"
-        android:textSize="18sp"
-        android:layout_below="@id/textViewCalorias"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="16dp"/>
-
-
-    <TextView
-        android:id="@+id/textoAlihoy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Introduce alimento consumido hoy"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="280dp"
-        android:textSize="24sp"
-        />
-
-
-    <Spinner
-        android:id="@+id/spinnerAli"
-        android:layout_width="259dp"
-        android:layout_height="47dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="320dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <ImageButton
-        android:id="@+id/aliAnadirHoy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="350dp"
-        android:layout_marginTop="310dp"
-        android:layout_marginRight="0dp"
-        android:onClick="calculoCalorias"
-        app:srcCompat="@android:drawable/ic_input_add" />
-
-
-
-   <Button
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_marginTop="400sp"
-       android:id="@+id/botonPasar"
-       android:text="Añadir nuevo alimento en la base de datos"
-       />
-
-
-
-
+        android:layout_below="@id/cardView2"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/boton_2"
+        android:text="AÑADIR NUEVO ALIMENTO" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -132,10 +186,8 @@
         app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/botton_nav_menu">
+        app:menu="@menu/botton_nav_menu" />
 
-
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
     <FrameLayout
         android:id="@+id/frame_layout"
         android:layout_width="0dp"
@@ -143,8 +195,6 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </RelativeLayout>

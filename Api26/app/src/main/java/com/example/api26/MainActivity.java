@@ -59,21 +59,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        //getApplicationContext().deleteDatabase("alimentos");
+       // getApplicationContext().deleteDatabase("alimentos");
         //Esta linea elimina la BBDD. Hay que hacerlo cuando cambias la estructura de la BBDD
 
         conexion = new ConexionBBDD(getApplicationContext());
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
+       // bottomNavigationView.setSelectedItemId(0);
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.estadisticas){
                 volverEstadisticas();
+                return true;
             }else if(itemId == R.id.alimentacion){
                 volverAlimentacion();
+                return true;
             }else if(itemId == R.id.ejercicio){
                 volverEjercicio();
+                return true;
             }
-            return true;
+            return false;
         });
 
         spinner2 = findViewById(R.id.spinnerAli);

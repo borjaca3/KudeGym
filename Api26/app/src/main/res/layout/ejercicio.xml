@@ -8,7 +8,11 @@
     tools:context=".MainActivity"
     android:background="#AFFFFD">
 
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/fondo" />
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"

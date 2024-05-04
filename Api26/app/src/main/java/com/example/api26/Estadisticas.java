@@ -1,6 +1,7 @@
 package com.example.api26;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CalendarView;
@@ -22,8 +23,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Estadisticas extends AppCompatActivity {
     private Calendar mCalendar;
-    private GridView mGridView;
     private CalendarAdapter mCalendarAdapter;
+    private GridView mGridView;
+
     private TextView mMonthTextView;
     private BottomNavigationView bottomNavigationView;
     @Override
@@ -32,7 +34,7 @@ public class Estadisticas extends AppCompatActivity {
         setContentView(R.layout.estadisticas);
         mGridView = findViewById(R.id.gridView);
         mMonthTextView = findViewById(R.id.monthTextView);
-
+        //mCalendarAdapter = new CalendarAdapter(this, mCalendar);
         mCalendar = Calendar.getInstance();
         updateCalendar();
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -75,7 +77,7 @@ public class Estadisticas extends AppCompatActivity {
                 selectedDate = selectedDate.substring(0, 8) + String.format(Locale.getDefault(), "%02d", day);
                 // Aquí puedes hacer algo con la fecha seleccionada, como mostrarla en un Toast
 
-
+                Log.d("hola", "fecha" + selectedDate);
 
             }
         });
@@ -113,4 +115,3 @@ public class Estadisticas extends AppCompatActivity {
     }
 
 }
-

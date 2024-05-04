@@ -29,7 +29,7 @@ public class SQLITE extends SQLiteOpenHelper {
                 "REFERENCES rutinas (id_rutina),FOREIGN KEY (id_ejercicio) REFERENCES ejercicios (id_ejercicio))");
 
 
-        db.execSQL("create table ejdiario (codigo integer primary key AUTOINCREMENT,ejercicio text,fecha text, repeticiones INTEGER, peso INTEGER,series INTEGER)");
+        db.execSQL("create table ejdiario (codigo integer primary key AUTOINCREMENT,ejercicio text,fecha text, repeticiones INTEGER, peso INTEGER,series INTEGER, comentarios text)");
     }
 
     @Override
