@@ -12,7 +12,7 @@
 
 Puedes descargar la última versión de KudeGym haciendo clic en el siguiente enlace:
 
-[Descargar KudeGym APK](https://github.com/tu-usuario/tu-repositorio/raw/main/ruta/al/archivo.apk)
+[Descargar KudeGym APK](KudeGym.apk)
 
 ## Instalación
 
