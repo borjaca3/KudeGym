@@ -1,5 +1,5 @@
 # KudeGym
-
+![Logo de Kudegym](KudeGym.png)
 ¡Bienvenido a KudeGym! Esta aplicación está diseñada para ayudarte a continuar con tu progreso en el gimnasio proporcionando tus estadísticas personales y permitiéndote llevar un seguimiento de cuántas calorías debes consumir cada día en base a tu peso, edad, sexo y altura.
 
 ## Características
