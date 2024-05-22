@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Api26</string>
+    <string name="app_name">KudeGym</string>
     <string-array name="drowpdownitems">//desplegables
         <item>Objetivo</item>
         <item>Volumen</item>
