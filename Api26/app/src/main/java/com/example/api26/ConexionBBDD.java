@@ -463,6 +463,14 @@ public class ConexionBBDD   extends Activity {
         return ejDiario;
     }
 
+    public boolean eliminaEjericio(String ejercicio, String fecha) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        int result = db.delete("ejdiario", "ejercicio" + "=? AND " + "fecha" + "=?", new String[]{ejercicio, fecha});
+        db.close();
+        return result > 0;
+
+    }
+
     public List<Ejercicio> getEstadisticasEjercicio(String ejercicio){
         List<Ejercicio> ejerciciosList = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -495,13 +503,30 @@ public class ConexionBBDD   extends Activity {
 
     public void ejercicioHecho(ContentValues values) {
         SQLiteDatabase baseDatos = dbHelper.getWritableDatabase();
-
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         baseDatos.insert("ejdiario",null,values );
 
 
     }
+    public List<String> getAllRutinas() {
+        List<String> rutinas = new ArrayList<>();
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String selectQuery = "SELECT * FROM rutina";
+        Cursor cursor = db.rawQuery(selectQuery,null);
 
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                String nombreRutina = cursor.getString(cursor.getColumnIndexOrThrow("nombre"));
+                rutinas.add(nombreRutina);
+            } while (cursor.moveToNext());
+
+            cursor.close();
+        }
+        db.close();
+        return rutinas;
+
+    }
     public boolean realizado(String ejercicio) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
@@ -555,6 +580,19 @@ public class ConexionBBDD   extends Activity {
         db.close();
         return altura;
     }
+    public void eliminarRutina(String nombreRutina) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.delete("RutinaDias", "id_rutina IN (SELECT codigo_rutina FROM rutina WHERE nombre = ?)", new String[]{nombreRutina});
+        db.delete("RutinaEjercicio", "id_rutina IN (SELECT codigo_rutina FROM rutina WHERE nombre = ?)", new String[]{nombreRutina});
+        db.delete("ejdiario", "ejercicio IN (SELECT nombre FROM ejercicios WHERE codigo_ejercicio IN " +
+                "(SELECT id_ejercicio FROM RutinaEjercicio WHERE id_rutina IN " +
+                "(SELECT codigo_rutina FROM rutina WHERE nombre = ?)))", new String[]{nombreRutina});
+
+        db.delete("rutina", "nombre = ?", new String[]{nombreRutina});
+
+        db.close();
+    }
+
     @SuppressLint("Range")
     public float obtenerEdad() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();

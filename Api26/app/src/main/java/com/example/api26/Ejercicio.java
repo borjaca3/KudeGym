@@ -121,6 +121,11 @@ public class Ejercicio extends Activity {
         LocalDate fechaActual = LocalDate.now();
         semana= String.valueOf(fechaActual.getDayOfWeek());
     }
+
+    public void editarRutinas(View view){
+        Intent intent= new Intent(this, EditarRutinas.class);
+        startActivity(intent);
+    }
     public void irRutina(View view){
         Intent intent= new Intent(this, Rutina.class);
         startActivity(intent);}

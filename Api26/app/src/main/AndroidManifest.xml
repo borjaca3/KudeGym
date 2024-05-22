@@ -31,6 +31,8 @@
         <activity android:name=".Ejercicio"/>
         <activity android:name=".EjDiario"/>
         <activity android:name=".EstadisticasEjercicio"/>
+        <activity android:name=".EditarRutinas" />
+
     </application>
 
 

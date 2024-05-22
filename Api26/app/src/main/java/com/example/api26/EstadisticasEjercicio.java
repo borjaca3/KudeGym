@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -95,6 +96,24 @@ public class EstadisticasEjercicio extends AppCompatActivity {
         comentarios.setText("Comentarios: " + ejDiario.comentarios);
         peso.setText("Peso: " + ejDiario.peso);
         repeticiones.setText("Repeticiones: " + ejDiario.repeticiones);
+
+    }
+
+    public void eliminarEjercicio(View view){
+        if(fecha==null || ejercicio==null) {
+            Toast.makeText(this, "Elige una sesión de entrenamiento", Toast.LENGTH_SHORT).show();
+        }else{
+            ejDiario = conexion.getEstadisticasEjercicioFecha(ejercicio, fecha);
+            if(conexion.eliminaEjericio(ejercicio,fecha)==true){
+                Toast.makeText(this, "Ejercicio '" + ejercicio + "' (" + fecha + ") eliminado", Toast.LENGTH_SHORT).show();
+                cargaGrafico(view);
+            }else {
+                Toast.makeText(this, "Error al eliminar la sesión", Toast.LENGTH_SHORT).show();
+            }
+            
+            
+
+        }
 
     }
     public void cargaGrafico(View view){

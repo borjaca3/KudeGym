@@ -102,7 +102,11 @@ public class Rutina extends Activity {
         startActivity(intent);
     }
 
+    public void editarRutinas(View view){
+        Intent intent= new Intent(this, EditarRutinas.class);
+        startActivity(intent);
 
+    }
 
 
 

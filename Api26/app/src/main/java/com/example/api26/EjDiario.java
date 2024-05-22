@@ -21,6 +21,8 @@ public class EjDiario extends Activity {
     EditText peso = null;
     EditText series = null;
     String nombreEjercicio;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
